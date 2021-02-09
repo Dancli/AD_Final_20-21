@@ -2,21 +2,31 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-public class Compra {
+public class CompraModel {
 	
+	private int idCompra;
 	private Date fecha;
 	private float precio;
 	private String idPaciente;
 	
-	public Compra() {
+	public CompraModel() {
 		super();
 	}
 
-	public Compra(Date fecha, float precio, String idPaciente) {
+	public CompraModel(int idCompra, Date fecha, float precio, String idPaciente) {
 		super();
+		this.idCompra = idCompra;
 		this.fecha = fecha;
 		this.precio = precio;
 		this.idPaciente = idPaciente;
+	}
+
+	public int getIdCompra() {
+		return idCompra;
+	}
+
+	public void setIdCompra(int idCompra) {
+		this.idCompra = idCompra;
 	}
 
 	public Date getFecha() {
@@ -45,7 +55,8 @@ public class Compra {
 
 	@Override
 	public String toString() {
-		return "Compra [fecha=" + fecha + ", precio=" + precio + ", idPaciente=" + idPaciente + "]";
+		return "CompraModel [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", idPaciente=" + idPaciente
+				+ "]";
 	}
 
 }

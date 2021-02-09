@@ -98,7 +98,7 @@ public class Compra {
 
 	@Override
 	public String toString() {
-		return "Compra [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", paciente=" + paciente
+		return "CompraModel [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", paciente=" + paciente
 				+ ", medicamentos=" + medicamentos + "]";
 	}
 	

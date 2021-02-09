@@ -16,9 +16,9 @@ public class Inicio {
     }
     @GetMapping({"/"})
     public String inicio(Model model) {
-        model.addAttribute("label","Porque Elegir Clinica sur?");
+        model.addAttribute("label","¿Por qué elegir Clinica Sur?");
         model.addAttribute("motivo","Existimos para mejorar la salud y la calidad de vida de los ciudadanos, " +
-                "ofertando servicios sanitarios excelentes, con el paciente como centro de nuestra atención, y profesionales altamente cualificados.");
+                "ofreciendo servicios sanitarios excelentes con el paciente como centro de nuestra atención y profesionales altamente cualificados.");
         model.addAttribute("quienessomos","El Grupo Hospitalario HLA es uno de los mayores proveedores hospitalarios de España. Lo componen 16 hospitales, " +
                 "36 centros médicos multiespecialidad y una red de 41 unidades de referencia en tratamientos de última generación que trabajan de forma integrada para proporcionar acceso a una asistencia sanitaria de alto nivel.");
 

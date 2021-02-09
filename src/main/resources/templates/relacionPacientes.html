@@ -75,7 +75,16 @@
                   <td th:text=${paciente.edad}> </td>
                   <td th:text=${paciente.direccion}> </td>
                   <td th:text=${paciente.foto}> </td>
-                  <td><button type="button" class="btn btn-default"><a th:href="@{bajaPaciente/?idPaciente=__${paciente.idPaciente}__}"><span class="icofont-ui-delete"></a></button><button type="button" class="btn btn-default"><a th:href="@{editar/?idPaciente=__${paciente.idPaciente}__}" ><span class="icofont-ui-edit"></span></button></a></td>
+                  <td>
+                  	<a class="btn btn-default" 
+                  	th:href="@{bajaPaciente/?idPaciente=__${paciente.idPaciente}__}">
+                  		<span class="icofont-ui-delete"></span>
+                  	</a>
+                  	<a class="btn btn-default" 
+                  	th:href="@{editar/?idPaciente=__${paciente.idPaciente}__}" >
+                  		<span class="icofont-ui-edit"></span>
+                  	</a>
+                  </td>
                   <!--<td><button type="button" class="btn btn-default"><a th:href="@{bajaPaciente/?idPaciente=__${paciente.idPaciente}__}"><span class="icofont-ui-delete"></a></button><button type="button" class="btn btn-default"><a th:href="@{altaPaciente/(id=${paciente.idPaciente})}" ><span class="icofont-ui-edit"></span></button></a></td>-->
 
                 </tr>

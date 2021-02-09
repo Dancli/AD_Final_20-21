@@ -2,8 +2,9 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-public class Medico {
+public class MedicoModel {
 	
+	private int idMedico;
 	private String nombre;
 	private String apellidos;
 	private int edad;
@@ -12,13 +13,14 @@ public class Medico {
 	private String username;
 	private String password;
 	
-	public Medico() {
+	public MedicoModel() {
 		super();
 	}
 
-	public Medico(String nombre, String apellidos, int edad, Date fechaAlta, String especialidad, String username,
-			String password) {
+	public MedicoModel(int idMedico, String nombre, String apellidos, int edad, Date fechaAlta, String especialidad,
+			String username, String password) {
 		super();
+		this.idMedico = idMedico;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.edad = edad;
@@ -26,6 +28,14 @@ public class Medico {
 		this.especialidad = especialidad;
 		this.username = username;
 		this.password = password;
+	}
+
+	public int getIdMedico() {
+		return idMedico;
+	}
+
+	public void setIdMedico(int idMedico) {
+		this.idMedico = idMedico;
 	}
 
 	public String getNombre() {
@@ -86,8 +96,11 @@ public class Medico {
 
 	@Override
 	public String toString() {
-		return "Medico [nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad + ", fechaAlta=" + fechaAlta
-				+ ", especialidad=" + especialidad + ", username=" + username + ", password=" + password + "]";
+		return "MedicoModel [idMedico=" + idMedico + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad
+				+ ", fechaAlta=" + fechaAlta + ", especialidad=" + especialidad + ", username=" + username
+				+ ", password=" + password + "]";
 	}
+	
+	
 	
 }

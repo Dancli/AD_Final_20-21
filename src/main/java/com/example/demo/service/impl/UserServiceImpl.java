@@ -55,16 +55,4 @@ public class UserServiceImpl implements UserService {
 		user.setEnabled(true);
 		return userRepository.save(user);
 	}
-
-	@Override
-	public com.example.demo.entity.User transformModelToEntity(com.example.demo.model.User userModel) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public com.example.demo.model.User transformEntityToModel(com.example.demo.entity.User userEntity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

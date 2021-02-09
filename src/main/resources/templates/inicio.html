@@ -65,7 +65,7 @@
   <header th:fragment="header" id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="inicio.html">Clinica Sur</a></h1>
+      <h1 class="logo mr-auto"><a th:href="@{/inicio/}">Clinica Sur</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="inicio.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -77,11 +77,13 @@
 
           <li class="drop-down"><a href="">Pacientes</a>
             <ul>
-              <li><a sec:authorize="!isAuthenticated()" th:href="@{/pacientes/altaPaciente}">Alta de pacientes</a></li>
-              <li><a th:href="@{/pacientes/relacion}">Relación de pacientes</a></li>
-              <li><a th:href="@{/tienda/pagina/1}">Tienda</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li sec:authorize="!isAuthenticated()"><a th:href="@{/pacientes/altaPaciente}">Alta de pacientes</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO')"><a th:href="@{/pacientes/relacion}">Lista de pacientes</a></li>
+              <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Mi perfil</a></li>
+              <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
+              <li><a href="#">Lista de profesionales</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE', 'ROLE_GUEST')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
             </ul>
           </li>
 
@@ -119,7 +121,7 @@
               <p th:text="${motivo}">
               </p>
               <div class="text-center">
-                <a href="#" class="more-btn">Pedir Cita Previa <i class="bx bx-chevron-right"></i></a>
+                <a sec:authorize="hasRole('ROLE_PACIENTE')" href="#" class="more-btn">Pedir Cita Previa <i class="bx bx-chevron-right"></i></a>
               </div>
 
             </div>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.model.Medicamento;
+import com.example.demo.model.MedicamentoModel;
 import com.example.demo.service.TiendaService;
 
 @Controller
@@ -37,19 +37,19 @@ public class TiendaController {
 	@GetMapping({"/pagina/{pageNumber}"})
 	public String mostrarPagina(@PathVariable(value="pageNumber") int pageNumber, @Param(value="keyword") String keyword, Model model) {
 		int pageSize = 3;
-		Page<Medicamento> pagina;
+		Page<MedicamentoModel> pagina;
 		if (keyword == null) {
 			pagina = tiendaService.paginateMedicamentos(pageNumber, pageSize);
 		} else {
 			pagina = tiendaService.findAllByKeyword(pageNumber, pageSize, keyword);
 		}
 		
-		List<Medicamento> medicamentos = pagina.getContent();
+		List<MedicamentoModel> medicamentoModels = pagina.getContent();
 		
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("totalPages", pagina.getTotalPages());
 		model.addAttribute("totalElements", pagina.getTotalElements());
-		model.addAttribute("medicamentos", medicamentos);
+		model.addAttribute("medicamentos", medicamentoModels);
 		model.addAttribute("keyword", keyword);
 		
 		return VIEW;

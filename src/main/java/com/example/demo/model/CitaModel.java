@@ -2,23 +2,33 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-public class Cita {
+public class CitaModel {
 	
+	private String idCita;
 	private String idPaciente;
 	private String idMedico;
 	private Date fecha;
 	private String observaciones;
 	
-	public Cita() {
+	public CitaModel() {
 		super();
 	}
 
-	public Cita(String idPaciente, String idMedico, Date fecha, String observaciones) {
+	public CitaModel(String idCita, String idPaciente, String idMedico, Date fecha, String observaciones) {
 		super();
+		this.idCita = idCita;
 		this.idPaciente = idPaciente;
 		this.idMedico = idMedico;
 		this.fecha = fecha;
 		this.observaciones = observaciones;
+	}
+
+	public String getIdCita() {
+		return idCita;
+	}
+
+	public void setIdCita(String idCita) {
+		this.idCita = idCita;
 	}
 
 	public String getIdPaciente() {
@@ -55,8 +65,10 @@ public class Cita {
 
 	@Override
 	public String toString() {
-		return "Cita [idPaciente=" + idPaciente + ", idMedico=" + idMedico + ", fecha=" + fecha + ", observaciones="
-				+ observaciones + "]";
+		return "CitaModel [idCita=" + idCita + ", idPaciente=" + idPaciente + ", idMedico=" + idMedico + ", fecha=" + fecha
+				+ ", observaciones=" + observaciones + "]";
 	}
+	
+	
 	
 }

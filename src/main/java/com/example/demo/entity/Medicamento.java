@@ -94,7 +94,7 @@ public class Medicamento {
 
 	@Override
 	public String toString() {
-		return "Medicamento [idMedicamento=" + idMedicamento + ", nombre=" + nombre + ", descripcion=" + descripcion
+		return "MedicamentoModel [idMedicamento=" + idMedicamento + ", nombre=" + nombre + ", descripcion=" + descripcion
 				+ ", receta=" + receta + ", precio=" + precio + ", stock=" + stock + "]";
 	}
 	

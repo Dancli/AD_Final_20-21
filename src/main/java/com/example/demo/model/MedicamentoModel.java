@@ -1,24 +1,34 @@
 package com.example.demo.model;
 
-public class Medicamento {
+public class MedicamentoModel {
 	
+	private int idMedicamento;
 	private String nombre;
 	private String descripcion;
 	private String receta;
 	private float precio;
 	private int stock;
 	
-	public Medicamento() {
+	public MedicamentoModel() {
 		super();
 	}
 
-	public Medicamento(String nombre, String descripcion, String receta, float precio, int stock) {
+	public MedicamentoModel(int idMedicamento, String nombre, String descripcion, String receta, float precio, int stock) {
 		super();
+		this.idMedicamento = idMedicamento;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.receta = receta;
 		this.precio = precio;
 		this.stock = stock;
+	}
+
+	public int getIdMedicamento() {
+		return idMedicamento;
+	}
+
+	public void setIdMedicamento(int idMedicamento) {
+		this.idMedicamento = idMedicamento;
 	}
 
 	public String getNombre() {
@@ -63,9 +73,8 @@ public class Medicamento {
 
 	@Override
 	public String toString() {
-		return "Medicamento [nombre=" + nombre + ", descripcion=" + descripcion + ", receta=" + receta + ", precio="
-				+ precio + ", stock=" + stock + "]";
+		return "MedicamentoModel [idMedicamento=" + idMedicamento + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ ", receta=" + receta + ", precio=" + precio + ", stock=" + stock + "]";
 	}
-	
 	
 }

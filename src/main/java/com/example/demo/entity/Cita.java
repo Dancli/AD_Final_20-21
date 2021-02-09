@@ -91,7 +91,7 @@ public class Cita {
 
 	@Override
 	public String toString() {
-		return "Cita [idCita=" + idCita + ", paciente=" + paciente + ", medico=" + medico + ", fecha=" + fecha
+		return "CitaModel [idCita=" + idCita + ", paciente=" + paciente + ", medico=" + medico + ", fecha=" + fecha
 				+ ", observaciones=" + observaciones + "]";
 	}
 	

@@ -38,7 +38,7 @@ private Compra compra;
 		Font font = FontFactory.getFont(FontFactory.HELVETICA);
 		font.setColor(Color.BLACK);
 		
-		cell.setPhrase(new Phrase("Compra ID", font));
+		cell.setPhrase(new Phrase("CompraModel ID", font));
 		table.addCell(cell);
 		
 		cell.setPhrase(new Phrase("Fecha", font));

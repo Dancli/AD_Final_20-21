@@ -79,13 +79,13 @@
 				<div>
 					<form class="form-signin" th:action="@{/auth/login-post}" th:object="${user}" method="POST">
 						<input type="hidden" name="${ csrf.parameterName }" value="${ csrf.token }">
-						<input type="hidden" name="username" id="username" value="invitado">
-						<input type="hidden" name="password" id="password" value="invitado">
+						<input type="hidden" name="username" id="username" value="guest">
+						<input type="hidden" name="password" id="password" value="guest">
 						<button type="submit" class="btn btn-lg btn-primary btn-block">Acceder como invitado</button>
 					</form>
 				</div>
 				
-				<span>¿No tienes una cuenta? <a th:ref="@{/pacientes/alta}">¡Regístrate!</a></span>
+				<span>¿No tienes una cuenta? <a th:href="@{/pacientes/altaPaciente}">¡Regístrate!</a></span>
 
 			</main>
 			<!-- End #main -->

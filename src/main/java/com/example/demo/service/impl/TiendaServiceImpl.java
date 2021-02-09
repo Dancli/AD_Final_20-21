@@ -24,39 +24,39 @@ public class TiendaServiceImpl implements TiendaService {
 	private DozerBeanMapper dozer;
 	
 	@Override
-	public Page<com.example.demo.model.Medicamento> paginateMedicamentos(int number, int size) {
+	public Page<com.example.demo.model.MedicamentoModel> paginateMedicamentos(int number, int size) {
 		Pageable pageable = PageRequest.of(number - 1, size, Sort.by("nombre"));
 		Page<Medicamento> pageMedicamentoEntity = this.tiendaRepository.findAll(pageable);
-		Page<com.example.demo.model.Medicamento> pageMedicamentoModel = pageMedicamentoEntity.map(
+		Page<com.example.demo.model.MedicamentoModel> pageMedicamentoModel = pageMedicamentoEntity.map(
 				(medicamentoEntity -> transformEntityToModel(medicamentoEntity))
 		);
 		return pageMedicamentoModel;
 	}
 	
 	@Override
-	public Page<com.example.demo.model.Medicamento> findAllByKeyword(int number, int size, String keyword) {
+	public Page<com.example.demo.model.MedicamentoModel> findAllByKeyword(int number, int size, String keyword) {
 		Pageable pageable = PageRequest.of(number - 1, size, Sort.by("nombre"));
 		Page<Medicamento> pageMedicamentoEntity = this.tiendaRepository.findAllByKeyword(keyword, pageable);
-		Page<com.example.demo.model.Medicamento> pageMedicamentoModel = pageMedicamentoEntity.map(
+		Page<com.example.demo.model.MedicamentoModel> pageMedicamentoModel = pageMedicamentoEntity.map(
 				(medicamentoEntity -> transformEntityToModel(medicamentoEntity))
 		);
 		return pageMedicamentoModel;
 	}
 	
 	@Override
-	public com.example.demo.model.Medicamento addMedicamento(com.example.demo.model.Medicamento medicamentoModel) {
+	public com.example.demo.model.MedicamentoModel addMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel) {
 		System.out.println("Añadir medicamento.");
 		return null;
 	}
 
 	@Override
-	public com.example.demo.model.Medicamento updateMedicamento(com.example.demo.model.Medicamento medicamentoModel) {
+	public com.example.demo.model.MedicamentoModel updateMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel) {
 		System.out.println("Editar medicamento.");
 		return null;
 	}
 	
 	@Override
-	public com.example.demo.model.Medicamento stockMedicamento(com.example.demo.model.Medicamento medicamentoModel) {
+	public com.example.demo.model.MedicamentoModel stockMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel) {
 		System.out.println("Aumentar el stock de un medicamento.");
 		return null;
 	}
@@ -68,13 +68,13 @@ public class TiendaServiceImpl implements TiendaService {
 	}
 
 	@Override
-	public Medicamento transformModelToEntity(com.example.demo.model.Medicamento medicamentoModel) {
+	public Medicamento transformModelToEntity(com.example.demo.model.MedicamentoModel medicamentoModel) {
 		return dozer.map(medicamentoModel, Medicamento.class);
 	}
 
 	@Override
-	public com.example.demo.model.Medicamento transformEntityToModel(Medicamento medicamento) {
-		return dozer.map(medicamento, com.example.demo.model.Medicamento.class);
+	public com.example.demo.model.MedicamentoModel transformEntityToModel(Medicamento medicamento) {
+		return dozer.map(medicamento, com.example.demo.model.MedicamentoModel.class);
 	}
 	
 }
