@@ -79,8 +79,21 @@
             <ul>
               <li sec:authorize="!isAuthenticated()"><a th:href="@{/pacientes/altaPaciente}">Alta de pacientes</a></li>
               <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO')"><a th:href="@{/pacientes/relacion}">Lista de pacientes</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/relacion}">Lista de Medicos</a></li>
               <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Mi perfil</a></li>
               <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
+              <li><a href="#">Lista de profesionales</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE', 'ROLE_GUEST')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
+            </ul>
+          </li>
+
+          <li class="drop-down"><a href="">Medicos</a>
+            <ul>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/altaMedico}">Alta de Medicos</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/relacion}">Lista de Medicos</a></li>
+              <li sec:authorize="hasRole('ROLE_MEDICO')"><a href="#">Mi perfil</a></li>
+              <!--<li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>-->
               <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
               <li><a href="#">Lista de profesionales</a></li>
               <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE', 'ROLE_GUEST')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
