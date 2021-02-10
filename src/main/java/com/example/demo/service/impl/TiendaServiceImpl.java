@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Medicamento;
+import com.example.demo.model.MedicamentoModel;
 import com.example.demo.repository.TiendaRepository;
 import com.example.demo.service.TiendaService;
 
@@ -44,26 +45,14 @@ public class TiendaServiceImpl implements TiendaService {
 	}
 	
 	@Override
-	public com.example.demo.model.MedicamentoModel addMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel) {
-		System.out.println("Añadir medicamento.");
-		return null;
-	}
-
-	@Override
-	public com.example.demo.model.MedicamentoModel updateMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel) {
-		System.out.println("Editar medicamento.");
-		return null;
-	}
-	
-	@Override
-	public com.example.demo.model.MedicamentoModel stockMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel) {
-		System.out.println("Aumentar el stock de un medicamento.");
-		return null;
+	public com.example.demo.model.MedicamentoModel saveMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel) {
+		Medicamento medicamento = transformModelToEntity(medicamentoModel);
+		return transformEntityToModel(tiendaRepository.save(medicamento));
 	}
 
 	@Override
 	public int removeMedicamento(int idMedicamento) {
-		System.out.println("Borrar medicamento.");
+		tiendaRepository.deleteById(idMedicamento);
 		return 0;
 	}
 
@@ -75,6 +64,14 @@ public class TiendaServiceImpl implements TiendaService {
 	@Override
 	public com.example.demo.model.MedicamentoModel transformEntityToModel(Medicamento medicamento) {
 		return dozer.map(medicamento, com.example.demo.model.MedicamentoModel.class);
+	}
+
+	@Override
+	public Medicamento findMedicamentoById(int idMedicamento) {
+		MedicamentoModel medicamentoModel = new MedicamentoModel();
+		Medicamento medicamento = transformModelToEntity(medicamentoModel);
+		medicamento = tiendaRepository.findById(idMedicamento).orElse(null);
+		return medicamento;
 	}
 	
 }

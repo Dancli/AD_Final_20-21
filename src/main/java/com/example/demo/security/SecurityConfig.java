@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,10 +21,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+		.csrf().disable()
 		.authorizeRequests()
-			.antMatchers("/", "/css/**",  "/img/**", "/js/**", "/vendor/**", 
-					"/inicio/**", 
-					"/pacientes/altaPaciente/**", "/pacientes/addPaciente/**","/medicos/addMedicos/**").permitAll()
+			.antMatchers("/", "/css/**",  "/img/**", "/js/**", "/vendor/**", "/inicio/**", "/pacientes/altaPaciente/**", "/pacientes/addPaciente/**").permitAll()
+			.antMatchers(HttpMethod.POST, "/tienda/**").permitAll()
+			.antMatchers(HttpMethod.PUT, "/tienda/**").permitAll()
+			.antMatchers(HttpMethod.DELETE, "/tienda/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()

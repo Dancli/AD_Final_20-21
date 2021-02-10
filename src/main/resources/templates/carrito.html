@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" 
+<html lang="en" 	
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
@@ -40,7 +40,6 @@
 
 <!-- Template Main CSS File -->
 <link rel="stylesheet" th:href="@{/css/style.css}">
-<link rel="stylesheet" th:href="@{/css/tienda.css}">
 
 <!-- =======================================================
   * Template Name: Medilab - v2.0.0
@@ -67,106 +66,120 @@
 	<section id="formulario" class="formulario">
 		<div class="container-fluid">
 			<main id="main">
-
-				<div id="welcoming">
-					<div class="jumbotron">
-						<h1>Catálogo</h1>
-						<p>En Clinica Sur, ofrecemos a nuestros pacientes toda una
-							gama de productos al mejor precio. Aprovecha nuestras ofertas, y
-							recibe tus pedidos en casa en menos de 48 horas.</p>
-
-						<!-- Formulario de búsqueda de medicamentos -->
-
-						<form class="search-form" th:action="@{/tienda/pagina/1}"
-							method="GET">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i
-										class="ri-search-eye-line"></i>
-									</span>
-								</div>
-								<input class="form-control" type="text" name="keyword"
-									th:value="${keyword}" required
-									placeholder="Nombre del producto">
-								<div class="input-group-append">
-									<input class="btn btn-light" type="submit" value="Búsqueda">
-								</div>
-							</div>
-						</form>
-
-					</div>
-				</div>
-
-				<div>
-					<div class="container">
-						<a sec:authorize="hasRole('ROLE_PACIENTE')" class="btn btn-primary btn-lg" th:href="@{/carrito/}">Carrito</a>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-lg" th:href="@{/tienda/addMedicamentoForm}">Añadir medicamentos</a>
-					</div>
+				<div class="pb-5">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-4" th:each="medicamento:${medicamentos}">
-								<div class="product">
-									<div class="picture">
-										<img th:src="@{/img/tienda/pills.jpg}" alt="image" />
-									</div>
-									<div class="info">
-										<h4 th:text="${medicamento.nombre}"></h4>
-										<span class="description" th:text="${medicamento.descripcion}"></span>
-										<span class="price" th:text="${medicamento.precio}+€"></span>
-										<span class="inStock" th:if="${medicamento.stock} > 0" th:text="${medicamento.stock}+' en stock'"></span>
-										<span class="outOfStock" th:if="${medicamento.stock} <= 0">Sin existencias</span>
-									</div>
-									<div sec:authorize="hasRole('ROLE_PACIENTE')">
-										<a class="btn btn-info pull-right" th:if="${medicamento.stock} > 0" href="#"> 
-											<i class='bx bxs-cart-add'></i> Añadir al carrito
-										</a>
-									</div>
-									<div sec:authorize="hasRole('ROLE_ADMIN')">
-										<form th:action="@{/tienda/save}" th:object="${medicamento}" method="POST">
-											<input type="hidden" name="idMedicamento" id="idMedicamento" th:value="${medicamento.idMedicamento}">
-											<input type="hidden" name="nombre" id="nombre" th:value="${medicamento.nombre}">
-											<input type="hidden" name="descripcion" id="descripcion" th:value="${medicamento.descripcion}">
-											<input type="hidden" name="precio" id="precio" th:value="${medicamento.precio}">
-											<input type="hidden" name="receta" id="receta" th:value="${medicamento.receta}">
-											<input class="form control" type="number" name="stock" id="stock" step="1" placeholder="0" th:value="${stock}">
-											<button class="btn btn-sm btn-info pull-right" type="submit"><i class='bx bx-chevrons-up'></i> Cambiar stock</button>
-										</form>
-										<a class="btn btn-info pull-right" th:href="@{../editMedicamentoForm/?idMedicamento=__${medicamento.idMedicamento}__}"><i class='bx bx-edit-alt'></i> Editar</a>
-										<a class="btn btn-info pull-right" th:href="@{../delete/?idMedicamento=__${medicamento.idMedicamento}__}"><i class='bx bx-trash-alt'></i> Eliminar</a>
-									</div>
+							<div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+								<!-- Shopping cart table -->
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col" class="border-0 bg-light">
+													<div class="p-2 px-3 text-uppercase">Producto</div>
+												</th>
+												<th scope="col" class="border-0 bg-light">
+													<div class="py-2 text-uppercase">Precio</div>
+												</th>
+												<th scope="col" class="border-0 bg-light">
+													<div class="py-2 text-uppercase">Cantidad</div>
+												</th>
+												<th scope="col" class="border-0 bg-light">
+													<div class="py-2 text-uppercase">Quitar</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row" class="border-0">
+													<div class="p-2">
+														<img
+															src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg"
+															alt="" width="70" class="img-fluid rounded shadow-sm">
+														<div class="ml-3 d-inline-block align-middle">
+															<h5 class="mb-0">
+																<a href="#"
+																	class="text-dark d-inline-block align-middle">Timex
+																	Unisex Originals</a>
+															</h5>
+														</div>
+													</div>
+												</th>
+												<td class="border-0 align-middle"><strong>$79.00</strong></td>
+												<td class="border-0 align-middle"><strong>3</strong></td>
+												<td class="border-0 align-middle"><a href="#"
+													class="text-dark"><i class='bx bxs-trash-alt' ></i></a></td>
+											</tr>
+											<tr>
+												<th scope="row">
+													<div class="p-2">
+														<img
+															src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg"
+															alt="" width="70" class="img-fluid rounded shadow-sm">
+														<div class="ml-3 d-inline-block align-middle">
+															<h5 class="mb-0">
+																<a href="#" class="text-dark d-inline-block">Lumix
+																	camera lense</a>
+															</h5>
+															<span class="text-muted font-weight-normal font-italic">Category:
+																Electronics</span>
+														</div>
+													</div>
+												</th>
+												<td class="align-middle"><strong>$79.00</strong></td>
+												<td class="align-middle"><strong>3</strong></td>
+												<td class="align-middle"><a href="#" class="text-dark"><i class='bx bxs-trash-alt' ></i></a></td>
+											</tr>
+											<tr>
+												<th scope="row">
+													<div class="p-2">
+														<img
+															src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-2_qxjis2.jpg"
+															alt="" width="70" class="img-fluid rounded shadow-sm">
+														<div class="ml-3 d-inline-block align-middle">
+															<h5 class="mb-0">
+																<a href="#" class="text-dark d-inline-block">Gray
+																	Nike running shoe</a>
+															</h5>
+															<span class="text-muted font-weight-normal font-italic">Category:
+																Fashion</span>
+														</div>
+													</div>
+												<td class="align-middle"><strong>$79.00</strong></td>
+												<td class="align-middle"><strong>3</strong></td>
+												<td class="align-middle"><a href="#" class="text-dark"><i class='bx bxs-trash-alt' ></i></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- End -->
+							</div>
+						</div>
+						<div class="row py-5 p-4 bg-white rounded shadow-sm">
+							<div class="col-lg-6">
+								<div
+									class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Resumen del pedido</div>
+								<div class="p-4">
+									<p class="font-italic mb-4">Las tasas de envío y otros costes adicionales
+										se calculan basándose en los artículos que hayas depositado en el carrito.</p>
+									<ul class="list-unstyled mb-4">
+										<li class="d-flex justify-content-between py-3 border-bottom"><strong
+											class="text-muted">Subtotal </strong><strong>$390.00</strong></li>
+										<li class="d-flex justify-content-between py-3 border-bottom"><strong
+											class="text-muted">Tasas de envío</strong><strong>$10.00</strong></li>
+										<li class="d-flex justify-content-between py-3 border-bottom"><strong
+											class="text-muted">Tasas adicionales</strong><strong>$0.00</strong></li>
+										<li class="d-flex justify-content-between py-3 border-bottom"><strong
+											class="text-muted">Total</strong>
+											<h5 class="font-weight-bold">$400.00</h5></li>
+									</ul>
+									<a th:href="@{/carrito/factura/pdf}" class="btn btn-dark rounded-pill py-2 btn-block">Proceder al pago</a>
 								</div>
 							</div>
-
-							<!-- Paginación -->
-
-							<div class="col-md-12" th:if="${totalPages > 1}">
-								<nav
-									style="margin: 20px 0; overflow: hidden; position: relative">
-									<ul class="pagination"
-										style="float: left; left: 50%; position: relative">
-										<li class="page-item" style="left: -50%; position: relative">
-											<a class="page-link" href="#" aria-label="Previous"
-											th:href="@{'/tienda/pagina/1'}"> <span aria-hidden="true">«</span>
-										</a>
-										</li>
-										<li class="page-item" style="left: -50%; position: relative"
-											th:each="page:${#numbers.sequence(1, totalPages)}"><a
-											class="page-link" th:if="${pageNumber} != pagina"
-											th:href="@{'/tienda/pagina/'+${page}}">[[${page}]]</a></li>
-										<li class="page-item" style="left: -50%; position: relative">
-											<a class="page-link" href="#" aria-label="Next"
-											th:href="@{'/tienda/pagina/'+${totalPages}}"> <span
-												aria-hidden="true">»</span>
-										</a>
-										</li>
-									</ul>
-								</nav>
-							</div>
-
 						</div>
 					</div>
 				</div>
-
 			</main>
 			<!-- End #main -->
 		</div>

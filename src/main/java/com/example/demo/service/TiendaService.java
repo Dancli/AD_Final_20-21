@@ -11,14 +11,8 @@ public interface TiendaService {
 	// Método para paginar todos los medicamentos dado un filtro de búsqueda.
 	public abstract Page<com.example.demo.model.MedicamentoModel> findAllByKeyword(int pagNum, int pagSize, String keyword);
 	
-	// Método para añadir un medicamento.
-	public abstract com.example.demo.model.MedicamentoModel addMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel);
-	
-	// Método para editar un medicamento.
-	public abstract com.example.demo.model.MedicamentoModel updateMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel);
-	
-	// Método para aumentar el stock de un medicamento.
-	public abstract com.example.demo.model.MedicamentoModel stockMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel);
+	// Método para guardar un medicamento.
+	public abstract com.example.demo.model.MedicamentoModel saveMedicamento(com.example.demo.model.MedicamentoModel medicamentoModel);
 	
 	// Método para borrar un medicamento.
 	public abstract int removeMedicamento(int idMedicamento);
@@ -28,5 +22,7 @@ public interface TiendaService {
 	
 	// Método para transformar una entidad a un modelo.
 	public abstract com.example.demo.model.MedicamentoModel transformEntityToModel(Medicamento medicamentoEntity);
+
+	public abstract Medicamento findMedicamentoById(int idMedicamento);
 
 }

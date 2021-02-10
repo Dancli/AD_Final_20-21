@@ -58,7 +58,7 @@ public class RelacionPacientes {
 
     //con esto editamos el paciente
     @GetMapping("/editar")
-    public String editar(@RequestParam(name="idPaciente",required = false) Integer idPaciente,Model model){
+    public String editar(@RequestParam(name="idPaciente", required = false) Integer idPaciente,Model model){
         Paciente paciente= new Paciente();
         paciente=pacienteService.findPacienteById(idPaciente);
         System.out.println(paciente.getIdPaciente());
