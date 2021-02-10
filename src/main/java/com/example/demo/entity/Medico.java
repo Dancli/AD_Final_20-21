@@ -136,8 +136,8 @@ public class Medico {
 
 	@Override
 	public String toString() {
-		return "MedicoModel [idMedico=" + idMedico + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad
-				+ ", fechaAlta=" + fechaAlta + ", especialidad=" + especialidad + ", username=" + username
+		return "Medico [idMedico=" + idMedico + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad
+				+ ", fechaAlta=" +  ", especialidad=" + especialidad + ", username=" + username
 				+ ", password=" + password + ", activo=" + activo +"]";
 	}
 	

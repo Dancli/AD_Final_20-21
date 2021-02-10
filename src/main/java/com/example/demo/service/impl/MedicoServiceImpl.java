@@ -51,7 +51,11 @@ public class MedicoServiceImpl implements MedicoService {
 
     @Override
     public MedicoModel addMedico(MedicoModel medicoModel) {
+
+        System.out.println("los parametros del medico en el servicio "+ medicoModel.toString());
         Medico medico=transform(medicoModel);
+        System.out.println("los parametros del medico en el servicio la entity "+ medico.toString());
+
         return transform(medicoRepository.save(medico));
     }
 

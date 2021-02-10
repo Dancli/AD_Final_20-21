@@ -44,9 +44,9 @@ public class MedicoController {
 
     @GetMapping(value = {"/altaMedico"})
     //public String pacienteForm(@PathVariable(name="idPaciente", required=false) Integer idPaciente, Model model) {
-    public String pacienteForm(@RequestParam(name="idPaciente",required = false) Integer idPaciente,@ RequestParam(name="nombre",required=false) String nombre, Model model){
-        MedicoModel medicoModel=new MedicoModel();
+    public String medicoForm(@RequestParam(name="idMedico",required = false) Integer idMedico, Model model){
 
+        MedicoModel medicoModel=new MedicoModel();
         model.addAttribute("medico", new MedicoModel());
         model.addAttribute("medico",medicoModel);
         return VISTA2;
@@ -66,9 +66,8 @@ public class MedicoController {
 
     //Para añadir al paciente
     @PostMapping("/addMedico")
-    public String addMedico(@Valid @ModelAttribute("medico") MedicoModel medicoModel,
-                              BindingResult bindingResult, RedirectAttributes flash, Model model,
-                              @RequestParam("foto") MultipartFile foto){
+    public String addMedico(@Valid @ModelAttribute("medico") MedicoModel medicoModel){
+                              //BindingResult bindingResult, RedirectAttributes flash, Model model){
         //ModelAndView mav=new ModelAndView(VISTA);
         //pacienteService.findPacienteById(paciente.getIdPaciente());
 
@@ -93,8 +92,9 @@ public class MedicoController {
 
         }*/
 
+       // System.out.println("los valores del medico son " + medicoModel.toString());
         medicoService.addMedico(medicoModel);
-        return "redirect:/medicos/altaMedico";
+        return "redirect:/medicos/relacion";
 
        /* if(bindingResult.hasErrors()) {
             model.addAttribute("pacientes", pacienteService.listAllPacientes());

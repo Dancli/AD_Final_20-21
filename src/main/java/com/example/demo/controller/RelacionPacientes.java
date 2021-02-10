@@ -48,7 +48,7 @@ public class RelacionPacientes {
 
     @GetMapping(value = {"/altaPaciente"})
     //public String pacienteForm(@PathVariable(name="idPaciente", required=false) Integer idPaciente, Model model) {
-    public String pacienteForm(@RequestParam(name="idPaciente",required = false) Integer idPaciente,@ RequestParam(name="nombre",required=false) String nombre, Model model){
+    public String pacienteForm(@RequestParam(name="idPaciente",required = false) Integer idPaciente,@RequestParam(name="nombre",required=false) String nombre, Model model){
         PacienteModel pacienteModel=new PacienteModel();
 
         model.addAttribute("paciente", new PacienteModel());
