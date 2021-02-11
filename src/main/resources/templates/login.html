@@ -63,29 +63,45 @@
 	<section id="formulario" class="formulario">
 		<div class="container-fluid">
 			<main id="main">
-				
-				<div>
-					<form class="form-signin" th:action="@{/auth/login-post}" th:object="${user}" method="POST">
-						<input type="hidden" name="${ csrf.parameterName }" value="${ csrf.token }">
-						<h1>Inicio de sesión</h1>
-						<label for="inputUser" class="sr-only">Username</label> 
-						<input type="text" class="form-control" placeholder="Username" name="username" id="username"> 
-						<label for="inputPassword" class="sr-only">Password</label> 
-						<input type="password" class="form-control" placeholder="Password" name="password" id="password"> 
-						<button type="submit" class="btn btn-lg btn-primary btn-block">Log In</button>
-					</form>
+
+				<div class="row mt-3 mb-5">
+					<div class="col-md-9 mx-auto">
+						<form class="form-signin" th:action="@{/auth/login-post}" th:object="${user}" method="POST">
+							<input type="hidden" name="${ csrf.parameterName }" value="${ csrf.token }">
+							<h1>Inicio de sesión</h1>
+							<div class="row mt-3 mb-3">
+								<label for="inputUser" class="sr-only">Username</label>
+								<input type="text" class="form-control" placeholder="Username" name="username" id="username">
+							</div>
+							<div class="row mt-3 mb-3">
+								<label for="inputPassword" class="sr-only">Password</label>
+								<input type="password" class="form-control" placeholder="Password" name="password" id="password">
+							</div>
+							<div class="row mt-3 mb-3">
+								<button type="submit" class="btn btn-lg btn-primary btn-block">Log In</button>
+							</div>
+						</form>
+					</div>
 				</div>
-				
-				<div>
-					<form class="form-signin" th:action="@{/auth/login-post}" th:object="${user}" method="POST">
-						<input type="hidden" name="${ csrf.parameterName }" value="${ csrf.token }">
-						<input type="hidden" name="username" id="username" value="guest">
-						<input type="hidden" name="password" id="password" value="guest">
-						<button type="submit" class="btn btn-lg btn-primary btn-block">Acceder como invitado</button>
-					</form>
+
+				<div class="col-md-9 mx-auto">
+					<div class="row mt-3 mb-3">
+						<form class="form-signin" th:action="@{/auth/login-post}" th:object="${user}" method="POST">
+							<input type="hidden" name="${ csrf.parameterName }" value="${ csrf.token }">
+							<input type="hidden" name="username" id="username" value="guest">
+							<input type="hidden" name="password" id="password" value="guest">
+							<div class="row mt-3 mb-3">
+								<button type="submit" class="btn btn-lg btn-primary btn-block">Acceder como invitado</button>
+							</div>
+						</form>
+					</div>
+
+
+
+					<div class="row mt-3 mb-3">
+						<span>¿No tienes una cuenta? <a th:href="@{/pacientes/altaPaciente}">¡Regístrate!</a></span>
+					</div>
 				</div>
-				
-				<span>¿No tienes una cuenta? <a th:href="@{/pacientes/altaPaciente}">¡Regístrate!</a></span>
 
 			</main>
 			<!-- End #main -->

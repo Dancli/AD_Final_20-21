@@ -137,8 +137,9 @@ public class Medico {
 	@Override
 	public String toString() {
 		return "Medico [idMedico=" + idMedico + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad
-				+ ", fechaAlta=" +  ", especialidad=" + especialidad + ", username=" + username
+				+ ", fechaAlta=" +fechaAlta+  ", especialidad=" + especialidad + ", username=" + username
 				+ ", password=" + password + ", activo=" + activo +"]";
 	}
+
 	
 }

@@ -46,21 +46,23 @@ public class MedicoServiceImpl implements MedicoService {
 
     @Override
     public Medico findMedicoById(int idMedico) {
-        return null;
+        MedicoModel medicoModel=new MedicoModel();
+        Medico medico=transform(medicoModel);
+        medico=medicoRepository.findById(idMedico).orElse(null);
+        return medico;
     }
 
     @Override
     public MedicoModel addMedico(MedicoModel medicoModel) {
 
-        System.out.println("los parametros del medico en el servicio "+ medicoModel.toString());
         Medico medico=transform(medicoModel);
-        System.out.println("los parametros del medico en el servicio la entity "+ medico.toString());
-
         return transform(medicoRepository.save(medico));
     }
 
     @Override
     public int removeMedico(int idMedico) {
+
+        medicoRepository.deleteById(idMedico);
         return 0;
     }
 
@@ -71,16 +73,17 @@ public class MedicoServiceImpl implements MedicoService {
 
     @Override
     public Medico transform(MedicoModel medicoModel) {
-        return null;
+        return dozer.map(medicoModel, Medico.class);
     }
 
     @Override
     public MedicoModel transform(Medico medico) {
-        return null;
+        return dozer.map(medico, MedicoModel.class);
     }
 
     @Override
     public MedicoModel findById(Integer idMedico) {
+        medicoRepository.findAll();
         return null;
     }
 }

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/medicos")
@@ -36,10 +37,10 @@ public class MedicoController {
     public MedicoController() {
     }
     @GetMapping({"/relacion"})
-    public ModelAndView relacionpacientes() {
-        ModelAndView pacientes=new ModelAndView(VISTA);
-        pacientes.addObject("medicos", medicoService.listAllMedicos());
-        return pacientes;
+    public ModelAndView relacionMedicos() {
+        ModelAndView medicos=new ModelAndView(VISTA);
+        medicos.addObject("medicos", medicoService.listAllMedicos());
+        return medicos;
     }
 
     @GetMapping(value = {"/altaMedico"})
@@ -48,6 +49,7 @@ public class MedicoController {
 
         MedicoModel medicoModel=new MedicoModel();
         model.addAttribute("medico", new MedicoModel());
+
         model.addAttribute("medico",medicoModel);
         return VISTA2;
     }
@@ -92,7 +94,10 @@ public class MedicoController {
 
         }*/
 
-       // System.out.println("los valores del medico son " + medicoModel.toString());
+       System.out.println("los valores del medico son " + medicoModel.toString());
+               
+        Date fecha=medicoModel.getFechaAlta();
+
         medicoService.addMedico(medicoModel);
         return "redirect:/medicos/relacion";
 
@@ -106,6 +111,17 @@ public class MedicoController {
 
 
     }
+
+    //para borrar medicos
+    @GetMapping("/bajaMedico")
+    //public String pacienteForm(@PathVariable(name="idPaciente", required=false) Integer idPaciente, Model model) {
+    public String bajaMedico(@RequestParam(name="idMedico",required=true) Integer idMedico, Model model){
+        //CiclistaModelo ciclistaModelo=new CiclistaModelo();
+
+        medicoService.removeMedico(idMedico);
+        return "redirect:/medicos/relacion";
+    }
+
 
 
 

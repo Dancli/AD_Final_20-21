@@ -12,13 +12,14 @@ public class MedicoModel {
 	private String especialidad;
 	private String username;
 	private String password;
+	private Boolean activo;
 	
 	public MedicoModel() {
 		super();
 	}
 
 	public MedicoModel(int idMedico, String nombre, String apellidos, int edad, Date fechaAlta, String especialidad,
-			String username, String password) {
+			String username, String password,Boolean activo) {
 		super();
 		this.idMedico = idMedico;
 		this.nombre = nombre;
@@ -28,6 +29,7 @@ public class MedicoModel {
 		this.especialidad = especialidad;
 		this.username = username;
 		this.password = password;
+		this.activo=activo;
 	}
 
 	public int getIdMedico() {
@@ -92,6 +94,14 @@ public class MedicoModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
 
 	@Override
