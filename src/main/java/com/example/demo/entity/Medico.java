@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -29,7 +31,7 @@ public class Medico {
 	private int edad;
 	
 	@Column(name="fechaalta")
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaAlta;
 	
 	@Column(name="especialidad", length=40)
@@ -40,7 +42,7 @@ public class Medico {
 	
 	@Column(name="password", length=30)
 	private String password;
-	
+
 	@Column(name="activo", nullable=false)
 	private boolean activo;
 	

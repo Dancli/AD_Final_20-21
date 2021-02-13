@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class MedicoModel {
@@ -8,6 +10,7 @@ public class MedicoModel {
 	private String nombre;
 	private String apellidos;
 	private int edad;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaAlta;
 	private String especialidad;
 	private String username;
@@ -106,11 +109,16 @@ public class MedicoModel {
 
 	@Override
 	public String toString() {
-		return "MedicoModel [idMedico=" + idMedico + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad
-				+ ", fechaAlta=" + fechaAlta + ", especialidad=" + especialidad + ", username=" + username
-				+ ", password=" + password + "]";
+		return "MedicoModel{" +
+				"idMedico=" + idMedico +
+				", nombre='" + nombre + '\'' +
+				", apellidos='" + apellidos + '\'' +
+				", edad=" + edad +
+				", fechaAlta=" + fechaAlta +
+				", especialidad='" + especialidad + '\'' +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", activo=" + activo +
+				'}';
 	}
-	
-	
-	
 }

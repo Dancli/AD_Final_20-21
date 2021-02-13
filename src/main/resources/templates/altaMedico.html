@@ -58,7 +58,7 @@
     <main id="main">
       <form action="#" th:action="@{/medicos/addMedico}" th:object="${medico}" method="post"  enctype="multipart/form-data">
         <div class="form-row">
-          <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1" id="message"><div class="form-group has-feedback"><label>Datos Paciente</label></div>
+          <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1" id="message"><div class="form-group has-feedback"><label>Datos Medico</label></div>
             <div class="form-group has-feedback">
 
               <input type="hidden" th:field="*{idMedico}"/>
@@ -78,14 +78,42 @@
               </div>
               <div class="col-sm-6">
                 <div class="form-group has-feedback">
-                  <label for="especialidad">Especialidad</label>
-                  <input th:field="*{especialidad}" type="text" class="form-control" id="especialidad" name="especialidad" placeholder="especialidad" />
+                  <label for="fechaAlta">Fecha Alta</label>
+                  <input th:field="*{fechaAlta}" type="date" class="form-control" id="fechaAlta" name="fechaAlta" required placeholder="Fecha Alta" />
                 </div>
               </div>
             </div>
-            <div class="form-group has-feedback">
-              <label for="fechaAlta">Fecha Alta</label>
-             <!-- <input th:field="*{fechaAlta}" type="date" class="form-control" id="fechaAlta" name="fechaAlta" required placeholder="Fecha Alta" />-->
+            <div class="form-row">
+              <div class="col-sm-6">
+                <div class="form-group has-feedback">
+                  <label for="especialidad">Especialidad</label><br>
+                  <select th:field="*{especialidad}" name="especialidad" id="especialidad">
+                    <div class="form-row">
+                      <div class="col-sm-6">
+                        <option value="Medico de Familia">Medico de Familia</option>
+                        <option value="digestivo">digestivo</option>
+                        <option value="neurologo">Neurologo</option>
+                        <option value="dermatologo">dermatologo</option>
+                        <option  value="traumatologo">traumatologo</option>
+                      </div>
+                    </div>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group has-feedback">
+                  <label for="especialidad">Activo</label><br>
+                  <select th:field="*{activo}" name="activo" id="activo">
+                    <div class="form-row">
+                      <div class="col-sm-6">
+                        <option value="True">Activo</option>
+                        <option value="False">No Activo</option>
+
+                      </div>
+                    </div>
+                  </select>
+                </div>
+              </div>
             </div>
             <div class="form-row">
               <div class="col-sm-6">
@@ -101,6 +129,7 @@
                 </div>
               </div>
             </div>
+
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">enviar <i class="fa fa-chevron-circle-right"></i></button></div>
             <hr>
           </div>

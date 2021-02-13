@@ -66,7 +66,7 @@ public class MedicoController {
     }
 
 
-    //Para añadir al paciente
+
     @PostMapping("/addMedico")
     public String addMedico(@Valid @ModelAttribute("medico") MedicoModel medicoModel){
                               //BindingResult bindingResult, RedirectAttributes flash, Model model){
@@ -96,7 +96,6 @@ public class MedicoController {
 
        System.out.println("los valores del medico son " + medicoModel.toString());
                
-        Date fecha=medicoModel.getFechaAlta();
 
         medicoService.addMedico(medicoModel);
         return "redirect:/medicos/relacion";

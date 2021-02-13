@@ -74,9 +74,14 @@
                   <td th:text="${medico.nombre}"> </td>
                   <td th:text=${medico.apellidos}> </td>
                   <td th:text=${medico.edad}> </td>
-                  <td th:text=${medico.fechaAlta}> </td>
+                  <td th:text="${#dates.format(medico.fechaAlta, 'dd-MM-yyyy')}"></td>
                   <td th:text=${medico.especialidad}> </td>
-                  <td th:text=${medico.activo}> </td>
+                  <!--<td th:text=${medico.activo}> </td>-->
+
+                  <td>
+                     <span th:if="${medico.activo == 'true'}">Activo</span>
+                     <span th:unless="${medico.activo == 'false'}">No Activo</span>
+                   </td>
                   <td>
                   	<a class="btn btn-default"
                   	th:href="@{bajaMedico/?idMedico=__${medico.idMedico}__}">
@@ -87,7 +92,6 @@
                   		<span class="icofont-ui-edit"></span>
                   	</a>
                   </td>
-                  <!--<td><button type="button" class="btn btn-default"><a th:href="@{bajaPaciente/?idPaciente=__${paciente.idPaciente}__}"><span class="icofont-ui-delete"></a></button><button type="button" class="btn btn-default"><a th:href="@{altaPaciente/(id=${paciente.idPaciente})}" ><span class="icofont-ui-edit"></span></button></a></td>-->
 
                 </tr>
               </tbody>
