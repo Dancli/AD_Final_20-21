@@ -70,9 +70,13 @@ public class RelacionPacientes {
 
     //Para añadir al paciente
     @PostMapping("/addPaciente")
-    public String addPaciente(@Valid @ModelAttribute("paciente") PacienteModel pacienteModel,
-                              BindingResult bindingResult, RedirectAttributes flash, Model model,
-                              @RequestParam("foto") MultipartFile foto){
+    public String addPaciente(
+    		@Valid @ModelAttribute("paciente") PacienteModel pacienteModel,
+            BindingResult bindingResult,
+            RedirectAttributes flash,
+            Model model,
+            @RequestParam("foto") MultipartFile foto,
+            @RequestParam("username") String username){
         //ModelAndView mav=new ModelAndView(VISTA);
         //pacienteService.findPacienteById(paciente.getIdPaciente());
 

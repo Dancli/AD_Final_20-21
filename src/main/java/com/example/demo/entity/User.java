@@ -22,9 +22,13 @@ public class User {
 	@Size(max = 100)
 	private String password;
 	
+	@Column(name = "enabled")
 	private boolean enabled;
 	
+	@Column(name = "role")
 	private String role;
+	
+	private String token;
 	
 	public User() {
 		
@@ -79,10 +83,18 @@ public class User {
 		this.role = role;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 	@Override
 	public String toString() {
-		return "User [idUsuario=" + idUsuario + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", role=" + role + "]";
+		return "User [idUsuario=" + idUsuario + ", username=" + username + ", password=" + password + ", enabled="
+				+ enabled + ", role=" + role + "]";
 	}
 	
 }

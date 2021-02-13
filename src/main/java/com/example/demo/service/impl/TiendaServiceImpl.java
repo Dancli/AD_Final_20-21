@@ -1,5 +1,9 @@
 package com.example.demo.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,6 +27,21 @@ public class TiendaServiceImpl implements TiendaService {
 	
 	@Autowired
 	private DozerBeanMapper dozer;
+	
+	@Override
+	public List<MedicamentoModel> listAllMedicamentos() {
+		List<Medicamento> listaMedicamentoEntity = tiendaRepository.findAll();
+		List<MedicamentoModel> listaMedicamentoModel = new ArrayList<>();
+		listaMedicamentoEntity.forEach(medicamentoEntity -> {
+			MedicamentoModel medicamentoModel = transformEntityToModel(medicamentoEntity);
+			listaMedicamentoModel.add(medicamentoModel);
+		});
+		Collections.sort(listaMedicamentoModel, 
+			(MedicamentoModel medicamento1, MedicamentoModel medicamento2) -> 
+			medicamento1.getNombre().compareTo(medicamento2.getNombre())
+		);
+		return listaMedicamentoModel;
+	}
 	
 	@Override
 	public Page<com.example.demo.model.MedicamentoModel> paginateMedicamentos(int number, int size) {

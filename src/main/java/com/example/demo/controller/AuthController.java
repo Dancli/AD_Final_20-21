@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -14,13 +15,14 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
 @Controller
+@RequestMapping("/auth")
 public class AuthController {
 	
 	@Autowired
 	@Qualifier("userService")
 	private UserService userService;
 
-	@GetMapping("/auth/login")
+	@GetMapping("/login")
 	public String login(
 			Model model, 
 			@RequestParam(name = "error", required = false) String error,
