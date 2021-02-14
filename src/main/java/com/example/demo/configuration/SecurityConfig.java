@@ -44,10 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+		.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.csrf().disable()
-		// .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
-			.antMatchers("/", "/css/**",  "/img/**", "/js/**", "/vendor/**", "/inicio/**", "/pacientes/altaPaciente/**", "/pacientes/addPaciente/**", "/auth/**").permitAll()
+			.antMatchers("/", "/css/**",  "/img/**", "/js/**", "/vendor/**", "/webjars/**",
+					"/inicio/**", 
+					"/pacientes/altaPaciente/**", "/pacientes/addPaciente/**", 
+					"/auth/**").permitAll()
 			.antMatchers(HttpMethod.GET, "/authRest/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/authRest/**").permitAll()
 			.anyRequest().authenticated()
@@ -61,8 +64,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.logout()
 			.logoutUrl("/logout")
 			.logoutSuccessUrl("/auth/login?logout")
-			.permitAll()
-			.and();
+			.permitAll();
+			
 	}
 	
 }

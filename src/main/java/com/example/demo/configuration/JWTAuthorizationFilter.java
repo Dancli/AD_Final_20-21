@@ -34,12 +34,12 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 				Claims claims = validateToken(request);
 				if (claims.get("authorities") != null) {
 					setUpSpringAuthentication(claims);
-				} else {
-					SecurityContextHolder.clearContext();
-				}
-			} else {
-				SecurityContextHolder.clearContext();
-			}
+				} // else {
+					// SecurityContextHolder.clearContext();
+				// }
+			} // else {
+				// SecurityContextHolder.clearContext();
+			// }
 			chain.doFilter(request, response);
 		} catch(ExpiredJwtException | UnsupportedJwtException | MalformedJwtException e) {
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);

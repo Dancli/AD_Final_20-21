@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Compra;
+import com.example.demo.model.CompraModel;
 import com.example.demo.repository.CarritoRepository;
 import com.example.demo.service.CarritoService;
 
@@ -17,6 +18,7 @@ public class CarritoServiceImpl implements CarritoService {
 	
 	@Override
 	public Compra findCompraByIdPaciente(int idPaciente) {
+		CompraModel compraModel = new CompraModel();
 		return null;
 	}
 
