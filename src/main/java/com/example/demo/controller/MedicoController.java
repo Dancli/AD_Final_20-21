@@ -27,6 +27,7 @@ public class MedicoController {
 
     private static final String VISTA = "relacionMedicos";
     private static final String VISTA2 = "altaMedico";
+    private static final String VISTA3="consultarporespecialidad";
     private static final Log LOG=LogFactory.getLog(MedicoController.class);
 
     @Autowired
@@ -41,6 +42,17 @@ public class MedicoController {
         ModelAndView medicos=new ModelAndView(VISTA);
         medicos.addObject("medicos", medicoService.listAllMedicos());
         return medicos;
+    }
+
+    //consultar por especialidad
+    @PostMapping("/consultaporespecialidad")
+    public String consultaPorEspecialidad(@Valid @ModelAttribute("medico") MedicoModel medicoModel){
+
+
+        medicoService.addMedico(medicoModel);
+        return "redirect:/medicos/relacion";
+
+
     }
 
     @GetMapping(value = {"/altaMedico"})

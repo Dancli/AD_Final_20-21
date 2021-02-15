@@ -83,7 +83,7 @@
               <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Mi perfil</a></li>
               <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>
               <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
-              <li><a href="#">Lista de profesionales</a></li>
+              <!--<li><a href="#">Lista de profesionales</a></li>-->
               <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE', 'ROLE_GUEST')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
             </ul>
           </li>
@@ -95,7 +95,7 @@
               <li sec:authorize="hasRole('ROLE_MEDICO')"><a href="#">Mi perfil</a></li>
               <!--<li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>-->
               <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
-              <li><a href="#">Lista de profesionales</a></li>
+              <li sec:authorize="hasAnyRole('ROLE_GUEST')"><a href="@{/medicos/consultarporespecialidad}"Consultar por especialidad</a></li>
               <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE', 'ROLE_GUEST')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
             </ul>
           </li>
@@ -208,6 +208,44 @@
 
 
   </main><!-- End #main -->
+
+  <!-- ======= Doctors Section ======= -->
+    <section id="doctors" class="doctors formulario">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Doctores Por Especialidad</h2>
+          <p>Seleccione la especialidad para consultar los doctores disponibles</p>
+        </div>
+        <form action="#" th:action="@{/medicos/addMedico}" th:object="${medico}" method="post"  >
+            <div class="col-md-6 mx-auto">
+               <div class="member d-flex align-items-start">
+                  <div class="form-row">
+                    <div class="col-sm-9">
+                      <div class="form-group has-feedback">
+                        <label for="especialidad">Especialidad</label><br>
+                        <select  name="especialidad" id="especialidad">
+                          <div class="form-row">
+                            <div class="col-sm-6">
+                              <option value="Medico de Familia">Medico de Familia</option>
+                              <option value="digestivo">digestivo</option>
+                              <option value="neurologo">Neurologo</option>
+                              <option value="dermatologo">dermatologo</option>
+                              <option  value="traumatologo">traumatologo</option>
+                            </div>
+                          </div>
+                        </select>
+                      </div>
+                     <!-- <div class="form-group"><a class="btn btn-primary btn-block" th:href="@{consultarespecialidad/?especialidad=__${medico.especialidad}__}">enviar <i class="fa fa-chevron-circle-right"></i></a></div>-->
+
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+        </form>
+      </div>
+    </section> <!--End Doctors Section -->
 
   <!-- ======= Footer ======= -->
   <footer th:fragment="footer" id="footer">
