@@ -1,24 +1,30 @@
 package com.example.demo.model;
 
 import java.util.Date;
+import java.util.Set;
+
+import com.example.demo.entity.Medicamento;
+import com.example.demo.entity.Paciente;
 
 public class CompraModel {
 	
 	private int idCompra;
 	private Date fecha;
 	private float precio;
-	private String idPaciente;
+	private Paciente paciente;
+	private Set<Medicamento> medicamentos;
 	
 	public CompraModel() {
 		super();
 	}
 
-	public CompraModel(int idCompra, Date fecha, float precio, String idPaciente) {
+	public CompraModel(int idCompra, Date fecha, float precio, Paciente paciente, Set<Medicamento> medicamentos) {
 		super();
 		this.idCompra = idCompra;
 		this.fecha = fecha;
 		this.precio = precio;
-		this.idPaciente = idPaciente;
+		this.paciente = paciente;
+		this.medicamentos = medicamentos;
 	}
 
 	public int getIdCompra() {
@@ -45,18 +51,26 @@ public class CompraModel {
 		this.precio = precio;
 	}
 
-	public String getIdPaciente() {
-		return idPaciente;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setIdPaciente(String idPaciente) {
-		this.idPaciente = idPaciente;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public Set<Medicamento> getMedicamentos() {
+		return medicamentos;
+	}
+
+	public void setMedicamentos(Set<Medicamento> medicamentos) {
+		this.medicamentos = medicamentos;
 	}
 
 	@Override
 	public String toString() {
-		return "CompraModel [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", idPaciente=" + idPaciente
-				+ "]";
+		return "CompraModel [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", paciente="
+				+ paciente + ", medicamentos=" + medicamentos + "]";
 	}
 
 }

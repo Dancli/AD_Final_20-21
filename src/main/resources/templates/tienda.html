@@ -99,7 +99,7 @@
 
 				<div>
 					<div class="container">
-						<a sec:authorize="hasRole('ROLE_PACIENTE')" class="btn btn-primary btn-lg" th:href="@{/carrito/}">Carrito</a>
+						<a sec:authorize="hasRole('ROLE_PACIENTE')" class="btn btn-primary btn-lg" th:href="@{/carrito/listado}">Carrito</a>
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-lg" th:href="@{/tienda/addMedicamentoForm}">Añadir medicamentos</a>
 					</div>
 					<div class="container">
@@ -123,7 +123,7 @@
 											<input type="hidden" name="descripcion" id="descripcion" th:value="${medicamento.descripcion}">
 											<input type="hidden" name="precio" id="precio" th:value="${medicamento.precio}">
 											<input type="hidden" name="receta" id="receta" th:value="${medicamento.receta}">
-											<input type="hidden" name="stock" id="stock" th:value="${medicamento.stock} - 1">
+											<input type="hidden" name="stock" id="stock" th:value="${medicamento.stock}">
 											<button class="btn btn-sm btn-info pull-right" type="submit"><i class='bx bxs-cart-add'></i> Añadir al carrito</button>
 										</form>
 									</div>

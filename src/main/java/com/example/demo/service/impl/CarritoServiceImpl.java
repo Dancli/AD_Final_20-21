@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,22 +17,24 @@ public class CarritoServiceImpl implements CarritoService {
 	@Qualifier("carritoRepository")
 	private CarritoRepository carritoRepository;
 	
+	@Autowired
+	private DozerBeanMapper dozer;
+	
 	@Override
-	public Compra findCompraByIdPaciente(int idPaciente) {
-		CompraModel compraModel = new CompraModel();
-		return null;
+	public CompraModel saveCompra(CompraModel compraModel) {
+		Compra compra = transformModelToEntity(compraModel);
+		return transformEntityToModel(carritoRepository.save(compra));
 	}
+
 
 	@Override
 	public Compra transformModelToEntity(com.example.demo.model.CompraModel compraModel) {
-		// TODO Auto-generated method stub
-		return null;
+		return dozer.map(compraModel, Compra.class);
 	}
 
 	@Override
 	public com.example.demo.model.CompraModel transformEntityToModel(Compra compraEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		return dozer.map(compraEntity, CompraModel.class);
 	}
-
+	
 }

@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Compra;
 
 @Repository("carritoRepository")
-public interface CarritoRepository extends JpaRepository<Compra, Serializable>{
+public interface CarritoRepository extends JpaRepository<Compra, Serializable> {
 
 }
