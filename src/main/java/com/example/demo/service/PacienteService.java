@@ -12,7 +12,10 @@ public interface PacienteService {
 
     //encontrar paciente por id
     public abstract Paciente findPacienteById(int idPaciente);
-
+    
+    // encontrar paciente por usuario
+    public abstract Paciente findPacienteByUsername(String username);
+    
     //añadir paciente
     public abstract PacienteModel addPaciente(PacienteModel pacienteModel);
 

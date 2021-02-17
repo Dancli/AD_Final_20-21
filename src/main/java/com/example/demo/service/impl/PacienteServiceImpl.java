@@ -80,5 +80,13 @@ public class PacienteServiceImpl  implements PacienteService {
         return null;
     }
 
+	@Override
+	public Paciente findPacienteByUsername(String username) {
+		PacienteModel pacienteModel=new PacienteModel();
+        Paciente paciente=transform(pacienteModel);
+        paciente=pacienteRepository.findPacienteByUsername(username);
+        return paciente;
+	}
+
 
 }
