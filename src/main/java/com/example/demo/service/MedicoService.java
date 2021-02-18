@@ -15,6 +15,9 @@ public interface MedicoService {
     //encontrar medico por idMedico
     public abstract Medico findMedicoById(int idMedico);
 
+    //encontrar medico por especialidad
+    public abstract List<MedicoModel> findMedicoByEspecialidad(String especialidad);
+
     //añadir medico
     public abstract MedicoModel addMedico(MedicoModel medicoModel);
 

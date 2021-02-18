@@ -9,6 +9,7 @@ import com.example.demo.service.MedicoService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,6 +51,19 @@ public class MedicoServiceImpl implements MedicoService {
         Medico medico=transform(medicoModel);
         medico=medicoRepository.findById(idMedico).orElse(null);
         return medico;
+    }
+
+    @Override
+    public List<MedicoModel> findMedicoByEspecialidad(String especialidad) {
+      System.out.println("la especialidad es "+ especialidad);
+
+        List<Medico> listaMedicosEspecialidad = medicoRepository.findByEspecialidad(especialidad);
+        List<MedicoModel> listaMedicosModel = new ArrayList<>();
+        listaMedicosEspecialidad.forEach(a -> {
+            MedicoModel medicoModel = transform(a);
+            listaMedicosModel.add(medicoModel);
+        });
+        return listaMedicosModel;
     }
 
     @Override

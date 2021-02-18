@@ -45,11 +45,12 @@ public class MedicoController {
     }
 
     //consultar por especialidad
-    @PostMapping("/consultaporespecialidad")
+    @GetMapping("/consultaporespecialidad")
     public String consultaPorEspecialidad(@Valid @ModelAttribute("medico") MedicoModel medicoModel){
 
 
-        medicoService.addMedico(medicoModel);
+        medicoService.findMedicoByEspecialidad(medicoModel.getEspecialidad());
+
         return "redirect:/medicos/relacion";
 
 
