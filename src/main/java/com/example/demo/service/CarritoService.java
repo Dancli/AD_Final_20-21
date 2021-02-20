@@ -9,9 +9,9 @@ public interface CarritoService {
 	public abstract CompraModel saveCompra(CompraModel compraModel);
 	
 	// Método para transformar un modelo a una entidad.
-	public abstract Compra transformModelToEntity(com.example.demo.model.CompraModel compraModel);
+	public abstract Compra transformModelToEntity(CompraModel compraModel);
 		
 	// Método para transformar una entidad a un modelo.
-	public abstract com.example.demo.model.CompraModel transformEntityToModel(Compra compraEntity);
+	public abstract CompraModel transformEntityToModel(Compra compraEntity);
 
 }

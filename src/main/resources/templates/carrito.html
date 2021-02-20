@@ -72,8 +72,12 @@
 							<div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
 
 								<!-- Shopping cart table -->
-								<div class="table-responsive">
-									<table class="table">
+								<div th:if="${medicamentos == null}">
+									<p class="font-italic mb-4">No hay nada en el carrito.</p>
+								</div>
+								<div class="table-responsive" th:if="${items != null}">
+									<p class="font-italic mb-4" th:if="${items.isEmpty()}">No hay nada en el carrito.</p>
+									<table class="table" th:if="!${items.isEmpty()}">
 										<thead>
 											<tr>
 												<th scope="col" class="border-0 bg-light">
@@ -90,17 +94,17 @@
 												</th>
 											</tr>
 										</thead>
-										<tbody th:each="medicamento:${medicamentos}">
+										<tbody th:each="item:${items}">
 											<tr>
 												<th scope="row" class="border-0">
 													<div class="p-2">
-														<h5 class="mb-0" th:text="${medicamento.nombre}"></h5>
+														<h5 class="mb-0" th:text="${item.medicamento.nombre}"></h5>
 													</div>
 												</th>
-												<td class="border-0 align-middle"><strong><span th:text="${medicamento.precio} + €"></span></strong></td>
+												<td class="border-0 align-middle"><strong><span th:text="${item.medicamento.precio} + €"></span></strong></td>
 												<!-- <td class="border-0 align-middle"><strong><span th:text="${medicamento.stock}"></span></strong></td> -->
 												<td class="border-0 align-middle">
-													<a href="#" class="text-dark"><i class='bx bxs-trash-alt' ></i></a>
+													<a th:href="@{removeFromCart/?idMedicamento=__${item.medicamento.idMedicamento}__}" class="text-dark"><i class='bx bxs-trash-alt' ></i></a>
 												</td>
 											</tr>
 										</tbody>
@@ -109,7 +113,8 @@
 								<!-- End -->
 							</div>
 						</div>
-						<div class="row py-5 p-4 bg-white rounded shadow-sm">
+						<div th:if="${items != null}">
+						<div class="row py-5 p-4 bg-white rounded shadow-sm" th:if="!${items.isEmpty()}">
 							<div class="col-lg-6">
 								<div
 									class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Resumen del pedido</div>
@@ -131,6 +136,8 @@
 								</div>
 							</div>
 						</div>
+						</div>
+						
 					</div>
 				</div>
 			</main>

@@ -3,21 +3,21 @@ package com.example.demo.entity;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="compra")
+@Table(name="compras")
 public class Compra {
 
 	@Id
@@ -35,25 +35,20 @@ public class Compra {
 	@JoinColumn(name="idPaciente")
 	private Paciente paciente;
 	
-	@ManyToMany
-	@JoinTable(
-			name="compra_medicamentos", 
-			joinColumns=@JoinColumn(name="idCompra", table="compra"),
-			inverseJoinColumns=@JoinColumn(name="idMedicamento", table="medicamentos")
-	)
-	private Set<Medicamento> medicamentos;
+	@OneToMany(mappedBy="compra", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<ItemCompra> items;
 	
 	public Compra() {
-		super();
+
 	}
 
-	public Compra(int idCompra, Date fecha, float precio, Paciente paciente, Set<Medicamento> medicamentos) {
+	public Compra(int idCompra, Date fecha, float precio, Paciente paciente, Set<ItemCompra> items) {
 		super();
 		this.idCompra = idCompra;
 		this.fecha = fecha;
 		this.precio = precio;
 		this.paciente = paciente;
-		this.medicamentos = medicamentos;
+		this.items = items;
 	}
 
 	public int getIdCompra() {
@@ -88,18 +83,18 @@ public class Compra {
 		this.paciente = paciente;
 	}
 
-	public Set<Medicamento> getMedicamentos() {
-		return medicamentos;
+	public Set<ItemCompra> getItems() {
+		return items;
 	}
 
-	public void setMedicamentos(Set<Medicamento> medicamentos) {
-		this.medicamentos = medicamentos;
+	public void setItems(Set<ItemCompra> items) {
+		this.items = items;
 	}
 
 	@Override
 	public String toString() {
-		return "CompraModel [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", paciente=" + paciente
-				+ ", medicamentos=" + medicamentos + "]";
+		return "Compra [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", paciente=" + paciente
+				+ ", items=" + items + "]";
 	}
 	
 }

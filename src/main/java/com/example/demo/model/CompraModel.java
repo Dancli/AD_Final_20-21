@@ -3,7 +3,7 @@ package com.example.demo.model;
 import java.util.Date;
 import java.util.Set;
 
-import com.example.demo.entity.Medicamento;
+import com.example.demo.entity.ItemCompra;
 import com.example.demo.entity.Paciente;
 
 public class CompraModel {
@@ -12,19 +12,19 @@ public class CompraModel {
 	private Date fecha;
 	private float precio;
 	private Paciente paciente;
-	private Set<Medicamento> medicamentos;
+	private Set<ItemCompra> items;
 	
 	public CompraModel() {
-		super();
+		
 	}
 
-	public CompraModel(int idCompra, Date fecha, float precio, Paciente paciente, Set<Medicamento> medicamentos) {
+	public CompraModel(int idCompra, Date fecha, float precio, Paciente paciente, Set<ItemCompra> items) {
 		super();
 		this.idCompra = idCompra;
 		this.fecha = fecha;
 		this.precio = precio;
 		this.paciente = paciente;
-		this.medicamentos = medicamentos;
+		this.items = items;
 	}
 
 	public int getIdCompra() {
@@ -59,18 +59,18 @@ public class CompraModel {
 		this.paciente = paciente;
 	}
 
-	public Set<Medicamento> getMedicamentos() {
-		return medicamentos;
+	public Set<ItemCompra> getItems() {
+		return items;
 	}
 
-	public void setMedicamentos(Set<Medicamento> medicamentos) {
-		this.medicamentos = medicamentos;
+	public void setItems(Set<ItemCompra> items) {
+		this.items = items;
 	}
 
 	@Override
 	public String toString() {
 		return "CompraModel [idCompra=" + idCompra + ", fecha=" + fecha + ", precio=" + precio + ", paciente="
-				+ paciente + ", medicamentos=" + medicamentos + "]";
+				+ paciente + ", items=" + items + "]";
 	}
 
 }

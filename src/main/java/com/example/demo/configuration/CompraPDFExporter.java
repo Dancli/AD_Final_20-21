@@ -2,10 +2,12 @@ package com.example.demo.configuration;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.demo.entity.Compra;
+import com.example.demo.entity.ItemCompra;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
@@ -18,19 +20,15 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class CompraPDFExporter {
-	
+
 private Compra compra;
 	
-	/*
-	@Autowired
-	private DozerBeanMapper dozer;
-	*/
-	
 	public CompraPDFExporter(Compra compra) {
+
 		this.compra = compra;
 	}
 	
-	private void writeTableHeader(PdfPTable table) {
+	private void writeCustomerTableHeader(PdfPTable table) {
 		PdfPCell cell = new PdfPCell();
 		cell.setBackgroundColor(Color.LIGHT_GRAY);
 		cell.setPadding(5);
@@ -38,7 +36,7 @@ private Compra compra;
 		Font font = FontFactory.getFont(FontFactory.HELVETICA);
 		font.setColor(Color.BLACK);
 		
-		cell.setPhrase(new Phrase("CompraModel ID", font));
+		cell.setPhrase(new Phrase("ID", font));
 		table.addCell(cell);
 		
 		cell.setPhrase(new Phrase("Fecha", font));
@@ -47,19 +45,51 @@ private Compra compra;
 		cell.setPhrase(new Phrase("Precio", font));
 		table.addCell(cell);
 		
-		cell.setPhrase(new Phrase("Paciente ID", font));
-		table.addCell(cell);
-		
-		cell.setPhrase(new Phrase("Medicamentos", font));
+		cell.setPhrase(new Phrase("Paciente", font));
 		table.addCell(cell);
 	}
 	
-	private void writeTableData(PdfPTable table) {
+	private void writeCustomerTableData(PdfPTable table) {
 		table.addCell(String.valueOf(compra.getIdCompra()));
 		table.addCell(String.valueOf(compra.getFecha()));
 		table.addCell(String.valueOf(compra.getPrecio()));
-		table.addCell(String.valueOf(compra.getPaciente()));
-		table.addCell(String.valueOf(compra.getMedicamentos()));
+		table.addCell(String.valueOf(compra.getPaciente().getNombre() + " " + compra.getPaciente().getApellidos()));
+	}
+	
+	private void writeProductsTableHeader(PdfPTable table) {
+		PdfPCell cell = new PdfPCell();
+		cell.setBackgroundColor(Color.LIGHT_GRAY);
+		cell.setPadding(5);
+		
+		Font font = FontFactory.getFont(FontFactory.HELVETICA);
+		font.setColor(Color.BLACK);
+		
+		cell.setPhrase(new Phrase("ID", font));
+		table.addCell(cell);
+		
+		cell.setPhrase(new Phrase("Nombre", font));
+		table.addCell(cell);
+		
+		cell.setPhrase(new Phrase("Descripción", font));
+		table.addCell(cell);
+		
+		cell.setPhrase(new Phrase("Precio", font));
+		table.addCell(cell);
+		
+		cell.setPhrase(new Phrase("Receta", font));
+		table.addCell(cell);
+	}
+	
+	private void writeProductsTableData(PdfPTable table) {
+		Set<ItemCompra> items = compra.getItems();
+		for(ItemCompra item : items) {
+			table.addCell(String.valueOf(item.getMedicamento().getIdMedicamento()));
+			table.addCell(String.valueOf(item.getMedicamento().getNombre()));
+			table.addCell(String.valueOf(item.getMedicamento().getDescripcion()));
+			table.addCell(String.valueOf(item.getMedicamento().getPrecio()));
+			table.addCell(String.valueOf(item.getMedicamento().getReceta()));
+		}
+		
 	}
 	
 	public void export(HttpServletResponse response) throws DocumentException, IOException {
@@ -69,22 +99,31 @@ private Compra compra;
 		document.open();
 		Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 		font.setSize(18);
-		font.setColor(Color.BLUE);
+		font.setColor(Color.BLACK);
 		
 		Paragraph p = new Paragraph("Recibo de la compra", font);
 		p.setAlignment(Paragraph.ALIGN_CENTER);
 		
 		document.add(p);
 		
-		PdfPTable table = new PdfPTable(5);
-		table.setWidthPercentage(100f);
-		table.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 1.5f});
-		table.setSpacingBefore(10);
+		PdfPTable customerTable = new PdfPTable(4);
+		customerTable.setWidthPercentage(100f);
+		customerTable.setWidths(new float[] {1.5f, 3.5f, 1.5f, 3.5f});
+		customerTable.setSpacingBefore(10);
 		
-		writeTableHeader(table);
-		writeTableData(table);
+		PdfPTable productsTable = new PdfPTable(5);
+		productsTable.setWidthPercentage(100f);
+		productsTable.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 1.5f});
+		productsTable.setSpacingBefore(10);
 		
-		document.add(table);
+		writeCustomerTableHeader(customerTable);
+		writeCustomerTableData(customerTable);
+		
+		writeProductsTableHeader(productsTable);
+		writeProductsTableData(productsTable);
+		
+		document.add(customerTable);
+		document.add(productsTable);
 		
 		document.close();
 	}

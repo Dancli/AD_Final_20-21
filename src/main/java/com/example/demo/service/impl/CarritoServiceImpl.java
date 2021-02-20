@@ -25,15 +25,14 @@ public class CarritoServiceImpl implements CarritoService {
 		Compra compra = transformModelToEntity(compraModel);
 		return transformEntityToModel(carritoRepository.save(compra));
 	}
-
-
+	
 	@Override
-	public Compra transformModelToEntity(com.example.demo.model.CompraModel compraModel) {
+	public Compra transformModelToEntity(CompraModel compraModel) {
 		return dozer.map(compraModel, Compra.class);
 	}
 
 	@Override
-	public com.example.demo.model.CompraModel transformEntityToModel(Compra compraEntity) {
+	public CompraModel transformEntityToModel(Compra compraEntity) {
 		return dozer.map(compraEntity, CompraModel.class);
 	}
 	
