@@ -15,6 +15,9 @@ import java.util.List;
 @Repository("MedicoRepository")
 public interface MedicoRepository extends JpaRepository<Medico, Serializable> {
 
-    List<Medico> findByEspecialidad(String especialidad);
+
+
+    @Query(value="SELECT * FROM medicos m WHERE m.especialidad LIKE %:especialidad%", nativeQuery = true)
+    public List<Medico> findByEspecialidad(String especialidad);
 
 }

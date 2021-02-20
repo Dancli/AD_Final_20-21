@@ -61,10 +61,10 @@
                 <tr>
                   <th scope="col">Nombre</th>
                   <th scope="col">Apellidos</th>
-                  <th scope="col">Edad</th>
-                  <th scope="col">Fecha Alta</th>
+                  <!--<th scope="col">Edad</th>-->
+                  <!--<th scope="col">Fecha Alta</th>-->
                   <th scope="col">Especialidad</th>
-                  <th scope="col">Activo</th>
+                  <!--<th scope="col">Activo</th>-->
                   <th scope="col">Acciones</th>
                 </tr>
               </thead>
@@ -73,15 +73,15 @@
 
                   <td th:text="${medico.nombre}"> </td>
                   <td th:text=${medico.apellidos}> </td>
-                  <td th:text=${medico.edad}> </td>
-                  <td th:text="${#dates.format(medico.fechaAlta, 'dd-MM-yyyy')}"></td>
+                  <!--<td th:text=${medico.edad}> </td>-->
+                  <!--<td th:text="${#dates.format(medico.fechaAlta, 'dd-MM-yyyy')}"></td>-->
                   <td th:text=${medico.especialidad}> </td>
                   <!--<td th:text=${medico.activo}> </td>-->
 
-                  <td>
+                 <!-- <td>
                      <span th:if="${medico.activo == 'true'}">Activo</span>
                      <span th:unless="${medico.activo == 'false'}">No Activo</span>
-                   </td>
+                   </td>-->
                   <td>
                   	<a class="btn btn-default"
                   	th:href="@{bajaMedico/?idMedico=__${medico.idMedico}__}">

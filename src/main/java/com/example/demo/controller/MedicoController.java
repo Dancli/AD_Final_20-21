@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Medico;
 import com.example.demo.entity.Paciente;
+import com.example.demo.model.MedicamentoModel;
 import com.example.demo.model.MedicoModel;
 import com.example.demo.model.PacienteModel;
 import com.example.demo.service.MedicoService;
@@ -10,6 +11,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/medicos")
@@ -27,7 +31,7 @@ public class MedicoController {
 
     private static final String VISTA = "relacionMedicos";
     private static final String VISTA2 = "altaMedico";
-    private static final String VISTA3="consultarporespecialidad";
+    private static final String VISTA3="relacionMedicoPorCategoria";
     private static final Log LOG=LogFactory.getLog(MedicoController.class);
 
     @Autowired
@@ -44,17 +48,15 @@ public class MedicoController {
         return medicos;
     }
 
-    //consultar por especialidad
-    @GetMapping("/consultaporespecialidad")
-    public String consultaPorEspecialidad(@Valid @ModelAttribute("medico") MedicoModel medicoModel){
-
-
-        medicoService.findMedicoByEspecialidad(medicoModel.getEspecialidad());
-
-        return "redirect:/medicos/relacion";
-
-
+    //se selecciona especialidad y muestra relacion
+    @GetMapping({"/relacionEspecialidad"})
+    public ModelAndView relacionEspecialidad(@Param(value="especialidad") String especialidad, Model model) {
+        ModelAndView medicos=new ModelAndView(VISTA3);
+        medicos.addObject("medicos", medicoService.findMedicoByEspecialidad(especialidad));
+        return medicos;
     }
+
+
 
     @GetMapping(value = {"/altaMedico"})
     //public String pacienteForm(@PathVariable(name="idPaciente", required=false) Integer idPaciente, Model model) {
