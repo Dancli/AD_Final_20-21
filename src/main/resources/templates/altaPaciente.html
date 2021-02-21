@@ -58,7 +58,10 @@
     <main id="main">
       <form action="#" th:action="@{/pacientes/addPaciente}" th:object="${paciente}" method="post"  enctype="multipart/form-data">
         <div class="form-row">
-          <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1" id="message"><div class="form-group has-feedback"><label>Datos Paciente</label></div>
+          <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1" id="message">
+          	<div class="form-group has-feedback">
+          		<label>Datos Paciente</label>
+        	</div>
             <div class="form-group has-feedback">
               <input type="hidden" th:field="*{idPaciente}">
               <label for="nombre">Nombre</label>

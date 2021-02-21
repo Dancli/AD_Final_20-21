@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" 
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - Medilab Bootstrap Template</title>
+  <title>Formulario de medicamentos</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -62,46 +64,44 @@
             			<div class="form-group has-feedback">
             				<label>Nuevo medicamento</label>
             			</div>
-            		</div>
-            	</div>
-            	<div class="form-row">
-            		<input type="hidden" th:field="*{idMedicamento}">
-            		<div class="form-group has-feedback">
-            			<label for="nombre">Nombre</label>
-            			<input type="text" class="form control" id="nombre" th:field="*{nombre}" th:value="${nombre}" placeholder="Nombre">
-            		</div>
-            	</div>
-            	<div class="form-row">
-            		<div class="col-sm-6">
+            			<input type="hidden" th:field="*{idMedicamento}">
             			<div class="form-group has-feedback">
-            				<label for="descripcion">Descripción</label>
-            				<textarea class="form control" id="descripcion" th:field="*{descripcion}" th:value="${descripcion}" placeholder="Descripción"></textarea>
+            				<label for="nombre">Nombre</label>
+            				<input type="text" class="form control" id="nombre" th:field="*{nombre}" th:value="${nombre}" placeholder="Nombre">
             			</div>
-            		</div>
-            	</div>
-            	<div class="form-row">
-            		<div class="col-sm-6">
-            			<div class="form-group has-feedback">
-            				<label for="precio">Precio</label>
-            				<input type="number" step="0.01" class="form control" id="precio" th:field="*{precio}" th:value="${precio}" placeholder="0.00">
+            			<div class="form-row">
+            				<div class="col-sm-6">
+            					<div class="form-group has-feedback">
+            						<label for="descripcion">Descripción</label>
+            						<input type="text" class="form control" id="descripcion" th:field="*{descripcion}" th:value="${descripcion}" placeholder="Descripción"></input>
+            					</div>
+            				</div>
             			</div>
-            		</div>
-            		<div class="col-sm-6">
-            			<div class="form-group has-feedback">
-            				<input type="checkbox" class="form-check-input" name="receta" id="receta" th:field="*{receta}" th:value="1">
-            				<label class="form-check-label" for="receta">¿Receta?</label>
+            			<div class="form-row">
+            				<div class="col-sm-6">
+            					<div class="form-group has-feedback">
+            						<label for="precio">Precio</label>
+            						<input type="number" step="0.01" class="form control" id="precio" th:field="*{precio}" th:value="${precio}" placeholder="0.00">
+            					</div>
+            				</div>
+            				<div class="col-sm-6">
+            					<div class="form-group has-feedback">
+            						<input type="checkbox" class="form-check-input" name="receta" id="receta" th:field="*{receta}" th:value="1">
+            						<label class="form-check-label" for="receta">¿Receta?</label>
+            					</div>
+            				</div>
+            				<div class="col-sm-6">
+            					<div class="form-group has-feedback">
+            						<label for="stock">Stock</label>
+            						<input type="number" step="1" class="form control" id="stock" th:field="*{stock}" th:value="${stock}" placeholder="0">
+            					</div>
+            				</div>
             			</div>
-            		</div>
-            		<div class="col-sm-6">
-            			<div class="form-group has-feedback">
-            				<label for="stock">Stock</label>
-            				<input type="number" step="1" class="form control" id="stock" th:field="*{stock}" th:value="${stock}" placeholder="0">
+            			<div class="form-row">
+            				<div class="form-group">
+            					<button class="btn btn-primary btn-block" type="submit">Enviar</button>
+            				</div>
             			</div>
-            		</div>
-            	</div>
-            	<div class="form-row">
-            		<div class="form-group">
-            			<button class="btn btn-primary btn-block" type="submit">Enviar</button>
             		</div>
             	</div>
             </form>
