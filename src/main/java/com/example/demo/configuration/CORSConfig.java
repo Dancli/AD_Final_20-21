@@ -15,7 +15,7 @@ public class CORSConfig {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-				.allowedOrigins("http://localhost:8080", "http://localhost:8100")
+				.allowedOrigins("http://localhost:8080", "http://localhost:8100", "https://clinicasur.herokuapp.com")
 				.allowedMethods("GET", "POST")
 				.maxAge(3600);
 			}

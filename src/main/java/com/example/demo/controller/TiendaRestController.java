@@ -23,7 +23,7 @@ public class TiendaRestController {
 	@Qualifier("tiendaService")
 	private TiendaService tiendaService;
 	
-	
+	@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:8100", "https://clinicasur.herokuapp.com"})
 	@GetMapping({"/list"})
 	public ResponseEntity<?> list() {
 		List<MedicamentoModel> medicamentos = tiendaService.listAllMedicamentos();

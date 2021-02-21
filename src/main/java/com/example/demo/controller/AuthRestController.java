@@ -29,7 +29,7 @@ public class AuthRestController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
-	@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:8100"})
+	@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:8100", "https://clinicasur.herokuapp.com"})
 	@PostMapping("/loginRest")
 	public User login(
 		@RequestParam("user") String username,
