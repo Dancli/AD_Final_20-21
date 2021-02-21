@@ -16,14 +16,11 @@ public interface PacienteService {
     // encontrar paciente por usuario
     public abstract Paciente findPacienteByUsername(String username);
     
-    //añadir paciente
-    public abstract PacienteModel addPaciente(PacienteModel pacienteModel);
+    //guardar paciente
+    public abstract PacienteModel savePaciente(PacienteModel pacienteModel);
 
     //borrar paciente
     public abstract int removePaciente(int idPaciente);
-
-    //actualizar
-    public abstract PacienteModel updatePaciente(PacienteModel pacienteModel);
 
     //transformar entidad a modelo
     public abstract Paciente transform(PacienteModel pacienteModel);

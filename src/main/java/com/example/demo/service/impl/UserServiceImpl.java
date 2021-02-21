@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.MedicoModel;
 import com.example.demo.model.PacienteModel;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
@@ -41,12 +44,34 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public com.example.demo.entity.User registrarPaciente(PacienteModel pacienteModel) {
-		com.example.demo.entity.User user = new com.example.demo.entity.User();
+		com.example.demo.entity.User user;
+		if(userRepository.findByUsername(pacienteModel.getUsername()) == null) {
+			user = new com.example.demo.entity.User();
+		}
+		else {
+			user = userRepository.findByUsername(pacienteModel.getUsername());
+		}
     	user.setUsername(pacienteModel.getUsername());
     	user.setPassword(pacienteModel.getPassword());
     	user.setEnabled(true);
     	user.setRole("ROLE_PACIENTE");
     	return registrar(user);
+	}
+	
+	@Override
+	public com.example.demo.entity.User registrarMedico(@Valid MedicoModel medicoModel) {
+		com.example.demo.entity.User user;
+		if(userRepository.findByUsername(medicoModel.getUsername()) == null) {
+			user = new com.example.demo.entity.User();
+		}
+		else {
+			user = userRepository.findByUsername(medicoModel.getUsername());
+		}
+		user.setUsername(medicoModel.getUsername());
+		user.setPassword(medicoModel.getPassword());
+		user.setEnabled(true);
+		user.setRole("ROLE_MEDICO");
+		return registrar(user);
 	}
 	
 	@Override

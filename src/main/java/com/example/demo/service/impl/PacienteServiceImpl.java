@@ -47,7 +47,7 @@ public class PacienteServiceImpl  implements PacienteService {
     }
 
     @Override
-    public PacienteModel addPaciente(PacienteModel pacienteModel) {
+    public PacienteModel savePaciente(PacienteModel pacienteModel) {
         Paciente paciente = transform(pacienteModel);
         return transform(pacienteRepository.save(paciente));
     }
@@ -57,12 +57,6 @@ public class PacienteServiceImpl  implements PacienteService {
         pacienteRepository.deleteById(idPaciente);
         return 0;
     }
-
-    @Override
-    public PacienteModel updatePaciente(PacienteModel pacienteModel) {
-        return null;
-    }
-
 
     @Override
     public Paciente transform(PacienteModel pacienteModel) {

@@ -100,7 +100,10 @@
 				<div>
 					<div class="container-fluid">
 						<div class="form-group mt-3">
-							<a sec:authorize="hasRole('ROLE_PACIENTE')" class="btn btn-primary btn-lg" th:href="@{/carrito/listado}">Carrito</a>
+							<a sec:authorize="hasRole('ROLE_PACIENTE')" class="btn btn-info btn-lg" th:href="@{/carrito/listado}">
+								<i class='bx bxs-cart'></i>
+								Ir al carrito de la compra
+							</a>
 						</div>
 						<div class="form-group">
 							<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-lg mx-4" th:href="@{/tienda/addMedicamentoForm}">Añadir medicamentos</a>

@@ -59,22 +59,25 @@
             <table class="table table-bordered">
               <thead class="thead-light">
                 <tr>
+                  <th scope="col">Foto</th>
                   <th scope="col">Nombre</th>
                   <th scope="col">Apellidos</th>
                   <th scope="col">Edad</th>
                   <th scope="col">Direccion</th>
-                  <th scope="col">Foto</th>
                   <th scope="col">Acciones</th>
                 </tr>
               </thead>
               <tbody th:each="paciente:${pacientes}" >
                 <tr>
-
+				  <td>
+				  	<img
+				  	th:src="${#strings.isEmpty(paciente.foto)} ? '/photos/logoPerfil.jpg' : ${paciente.foto}"
+				  	class="img-responsive rounded-circle center-block" alt="image" style="height: 50px; width: 50px">
+				  </td>
                   <td th:text="${paciente.nombre}"> </td>
                   <td th:text=${paciente.apellidos}> </td>
                   <td th:text=${paciente.edad}> </td>
                   <td th:text=${paciente.direccion}> </td>
-                  <td th:text=${paciente.foto}> </td>
                   <td>
                   	<a class="btn btn-default" 
                   	th:href="@{bajaPaciente/?idPaciente=__${paciente.idPaciente}__}">
@@ -90,6 +93,7 @@
               </tbody>
             </table>
           </main><!-- End #main -->
+          <div class="form-group"><a class="btn btn-primary btn-block" th:href="@{/pacientes/altaPaciente}">Alta Paciente <i class="fa fa-chevron-circle-right"></i></a></div>
     </div>
   </section>
 

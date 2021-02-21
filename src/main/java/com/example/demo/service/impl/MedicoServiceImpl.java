@@ -1,25 +1,22 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Medico;
-import com.example.demo.entity.Paciente;
-import com.example.demo.model.MedicoModel;
-import com.example.demo.model.PacienteModel;
-import com.example.demo.repository.MedicoRepository;
-import com.example.demo.service.MedicoService;
-import org.dozer.DozerBeanMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Medico;
+import com.example.demo.model.MedicoModel;
+import com.example.demo.repository.MedicoRepository;
+import com.example.demo.service.MedicoService;
+
 
 @Service("MedicoServiceImpl")
 public class MedicoServiceImpl implements MedicoService {
-
 
     @Autowired
     @Qualifier("MedicoRepository")
@@ -27,8 +24,6 @@ public class MedicoServiceImpl implements MedicoService {
 
     @Autowired
     private DozerBeanMapper dozer;
-
-
 
     @Override
     public List<MedicoModel> listAllMedicos() {
@@ -67,22 +62,15 @@ public class MedicoServiceImpl implements MedicoService {
     }
 
     @Override
-    public MedicoModel addMedico(MedicoModel medicoModel) {
-
+    public MedicoModel saveMedico(MedicoModel medicoModel) {
         Medico medico=transform(medicoModel);
         return transform(medicoRepository.save(medico));
     }
 
     @Override
     public int removeMedico(int idMedico) {
-
         medicoRepository.deleteById(idMedico);
         return 0;
-    }
-
-    @Override
-    public MedicoModel updateMedico(MedicoModel medicoModel) {
-        return null;
     }
 
     @Override

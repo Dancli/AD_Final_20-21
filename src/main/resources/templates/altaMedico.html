@@ -56,7 +56,7 @@
 <section id="formulario" class="formulario">
   <div class="container-fluid">
     <main id="main">
-      <form action="#" th:action="@{/medicos/addMedico}" th:object="${medico}" method="post"  enctype="multipart/form-data">
+      <form action="#" th:action="@{/medicos/saveMedico}" th:object="${medico}" method="post"  enctype="multipart/form-data">
         <div class="form-row">
           <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1" id="message"><div class="form-group has-feedback"><label>Datos Medico</label></div>
             <div class="form-group has-feedback">
@@ -88,15 +88,11 @@
                 <div class="form-group has-feedback">
                   <label for="especialidad">Especialidad</label><br>
                   <select th:field="*{especialidad}" name="especialidad" id="especialidad">
-                    <div class="form-row">
-                      <div class="col-sm-6">
-                        <option value="Medico de Familia">Medico de Familia</option>
-                        <option value="digestivo">digestivo</option>
-                        <option value="neurologo">Neurologo</option>
-                        <option value="dermatologo">dermatologo</option>
-                        <option  value="traumatologo">traumatologo</option>
-                      </div>
-                    </div>
+                  	<option value="Medico de Familia">Medico de Familia</option>
+                  	<option value="digestivo">digestivo</option>
+                  	<option value="neurologo">Neurologo</option>
+                  	<option value="dermatologo">dermatologo</option>
+                  	<option  value="traumatologo">traumatologo</option>
                   </select>
                 </div>
               </div>
@@ -104,13 +100,8 @@
                 <div class="form-group has-feedback">
                   <label for="especialidad">Activo</label><br>
                   <select th:field="*{activo}" name="activo" id="activo">
-                    <div class="form-row">
-                      <div class="col-sm-6">
-                        <option value="True">Activo</option>
-                        <option value="False">No Activo</option>
-
-                      </div>
-                    </div>
+                  	<option value="true">Activo</option>
+                  	<option value="false">No Activo</option>
                   </select>
                 </div>
               </div>

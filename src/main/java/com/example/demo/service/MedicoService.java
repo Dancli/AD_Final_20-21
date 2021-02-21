@@ -18,14 +18,11 @@ public interface MedicoService {
     //encontrar medico por especialidad
     public abstract List<MedicoModel> findMedicoByEspecialidad(String especialidad);
 
-    //añadir medico
-    public abstract MedicoModel addMedico(MedicoModel medicoModel);
+    //guardar medico
+    public abstract MedicoModel saveMedico(MedicoModel medicoModel);
 
     //borrar medico
     public abstract int removeMedico(int idMedico);
-
-    //actualizar
-    public abstract MedicoModel updateMedico(MedicoModel medicoModel);
 
     //transformar entidad a modelo
     public abstract Medico transform(MedicoModel medicoModel);
