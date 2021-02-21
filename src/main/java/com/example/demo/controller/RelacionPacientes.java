@@ -11,6 +11,8 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -117,6 +119,22 @@ public class RelacionPacientes {
         pacienteService.removePaciente(idPaciente);
         return "redirect:/pacientes/relacion";
     }
+
+    //Para tener los datos del paciente
+    @GetMapping("/perfilPaciente")
+    public String perfilPaciente( Model model){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = userDetails.getUsername();
+
+        System.out.println("el usario es "+username);
+        Paciente paciente= new Paciente();
+        paciente=pacienteService.findPacienteByUsername(username);
+        System.out.println(paciente.getIdPaciente());
+        System.out.println(paciente.getNombre());
+        model.addAttribute("paciente",paciente);
+        return VISTA2;
+    }
+
 
 
 

@@ -27,6 +27,7 @@ public class CitaController {
         return VISTA;
     }
 
+
     @PostMapping("/addCita")
     public String addCita(
             @Valid @ModelAttribute("cita") CitaModel citaModel,
@@ -34,16 +35,11 @@ public class CitaController {
             RedirectAttributes flash,
             Model model){
 
-
-
         //CitaService.
         //userService.registrarPaciente(pacienteModel);
 
         //return mav;
         return "redirect:/pacientes/relacion";
-
-
-
 
     }
 

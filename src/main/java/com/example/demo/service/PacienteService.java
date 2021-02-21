@@ -22,6 +22,8 @@ public interface PacienteService {
     //borrar paciente
     public abstract int removePaciente(int idPaciente);
 
+
+
     //transformar entidad a modelo
     public abstract Paciente transform(PacienteModel pacienteModel);
 

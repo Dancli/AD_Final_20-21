@@ -77,7 +77,7 @@
         <li sec:authorize="isAuthenticated()" class="drop-down"><a href="">Pacientes</a>
           <ul>
             <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO')"><a th:href="@{/pacientes/relacion}">Lista de pacientes</a></li>
-            <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Mi perfil</a></li>
+            <li sec:authorize="hasRole('ROLE_PACIENTE')"><a th:href="@{/pacientes/perfilPaciente}">Mi perfil</a></li>
             <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>
             <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
             <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
