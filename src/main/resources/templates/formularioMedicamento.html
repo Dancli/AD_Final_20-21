@@ -58,53 +58,75 @@
   <section id="formulario" class="formulario">
     <div class="container-fluid">
           <main id="main">
-            <form th:action="@{/tienda/save}" th:object="${medicamento}" method="POST">
-            	<div class="form-row">
-            		<div class="col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1" id="message">
-            			<div class="form-group has-feedback">
-            				<label>Nuevo medicamento</label>
-            			</div>
-            			<input type="hidden" th:field="*{idMedicamento}">
-            			<div class="form-group has-feedback">
-            				<label for="nombre">Nombre</label>
-            				<input type="text" class="form control" id="nombre" th:field="*{nombre}" th:value="${nombre}" placeholder="Nombre">
-            			</div>
-            			<div class="form-row">
-            				<div class="col-sm-6">
-            					<div class="form-group has-feedback">
-            						<label for="descripcion">Descripción</label>
-            						<input type="text" class="form control" id="descripcion" th:field="*{descripcion}" th:value="${descripcion}" placeholder="Descripción"></input>
-            					</div>
-            				</div>
-            			</div>
-            			<div class="form-row">
-            				<div class="col-sm-6">
-            					<div class="form-group has-feedback">
-            						<label for="precio">Precio</label>
-            						<input type="number" step="0.01" class="form control" id="precio" th:field="*{precio}" th:value="${precio}" placeholder="0.00">
-            					</div>
-            				</div>
-            				<div class="col-sm-6">
-            					<div class="form-group has-feedback">
-            						<input type="checkbox" class="form-check-input" name="receta" id="receta" th:field="*{receta}" th:value="1">
-            						<label class="form-check-label" for="receta">¿Receta?</label>
-            					</div>
-            				</div>
-            				<div class="col-sm-6">
-            					<div class="form-group has-feedback">
-            						<label for="stock">Stock</label>
-            						<input type="number" step="1" class="form control" id="stock" th:field="*{stock}" th:value="${stock}" placeholder="0">
-            					</div>
-            				</div>
-            			</div>
-            			<div class="form-row">
-            				<div class="form-group">
-            					<button class="btn btn-primary btn-block" type="submit">Enviar</button>
-            				</div>
-            			</div>
-            		</div>
-            	</div>
-            </form>
+              <div class="row mt-3 mb-5">
+                  <div class="col-md-9 mx-auto">
+
+                      <form th:action="@{/tienda/save}" th:object="${medicamento}" method="POST">
+                          <div class="form-row">
+                              <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1" id="message">
+                                  <div class="form-group has-feedback">
+                                      <label>Nuevo medicamento</label>
+                                  </div>
+                                  <input type="hidden" th:field="*{idMedicamento}">
+                                  <div class="form-row">
+                                      <div class="col-sm-6">
+                                          <div class="form-group has-feedback">
+                                          <label for="nombre">Nombre</label>
+                                          <input type="text" class="form control" id="nombre" th:field="*{nombre}" th:value="${nombre}" placeholder="Nombre">
+                                      </div>
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <div class="form-group has-feedback">
+                                          <label for="descripcion">Descripción</label>
+                                          <input type="text" class="form control" id="descripcion" th:field="*{descripcion}" th:value="${descripcion}" placeholder="Descripción"></input>
+                                      </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-row">
+                                      <div class="col-sm-6">
+                                          <div class="form-group has-feedback">
+                                              <label for="precio">Precio</label>
+                                              <input type="number" step="0.01" class="form control" id="precio" th:field="*{precio}" th:value="${precio}" placeholder="0.00">
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <div class="form-group has-feedback">
+                                              <input type="checkbox" class="form-check-input" name="receta" id="receta" th:field="*{receta}" th:value="1">
+                                              <label class="form-check-label" for="receta">¿Receta?</label>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="form-row">
+                                      <div class="col-sm-6">
+                                          <div class="form-group has-feedback">
+                                              <label for="stock">Stock</label>
+                                              <input type="number" step="1" class="form control" id="stock" th:field="*{stock}" th:value="${stock}" placeholder="0">
+                                          </div>
+                                      </div>
+
+                                  <div class="form-group">
+
+                                              <button class="btn btn-primary btn-block" type="submit">Enviar</button>
+
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                      </form>
+
+
+
+
+                    </div>
+
+
+
+
+
+
+              </div>
+
 
           </main><!-- End #main -->
     </div>
