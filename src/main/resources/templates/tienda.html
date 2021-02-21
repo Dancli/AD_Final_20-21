@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Inner Page - Medilab Bootstrap Template</title>
+<title>Tienda</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -69,7 +69,7 @@
 			<main id="main">
 
 				<div id="welcoming">
-					<div class="jumbotron">
+					<div class="jumbotron mb-3">
 						<h1>Catálogo</h1>
 						<p>En Clinica Sur, ofrecemos a nuestros pacientes toda una
 							gama de productos al mejor precio. Aprovecha nuestras ofertas, y
@@ -85,7 +85,7 @@
 										class="ri-search-eye-line"></i>
 									</span>
 								</div>
-								<input class="form-control" type="text" name="keyword"
+								<input class="form-control md-2" type="text" name="keyword"
 									th:value="${keyword}" required
 									placeholder="Nombre del producto">
 								<div class="input-group-append">
@@ -98,11 +98,15 @@
 				</div>
 
 				<div>
-					<div class="container">
-						<a sec:authorize="hasRole('ROLE_PACIENTE')" class="btn btn-primary btn-lg" th:href="@{/carrito/listado}">Carrito</a>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-lg" th:href="@{/tienda/addMedicamentoForm}">Añadir medicamentos</a>
+					<div class="container-fluid">
+						<div class="form-group mt-3">
+							<a sec:authorize="hasRole('ROLE_PACIENTE')" class="btn btn-primary btn-lg" th:href="@{/carrito/listado}">Carrito</a>
+						</div>
+						<div class="form-group">
+							<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-lg mx-4" th:href="@{/tienda/addMedicamentoForm}">Añadir medicamentos</a>
+						</div>
 					</div>
-					<div class="container">
+					<div class="container_fluid">
 						<div class="row">
 							<div class="col-md-4" th:each="medicamento:${medicamentos}">
 								<div class="product">
@@ -123,8 +127,12 @@
 											<input type="hidden" name="descripcion" id="descripcion" th:value="${medicamento.descripcion}">
 											<input type="hidden" name="precio" id="precio" th:value="${medicamento.precio}">
 											<input type="hidden" name="receta" id="receta" th:value="${medicamento.receta}">
-											<input type="hidden" name="stock" id="stock" th:value="${medicamento.stock}">
-											<button class="btn btn-sm btn-info pull-right" type="submit"><i class='bx bxs-cart-add'></i> Añadir al carrito</button>
+											<div class="form-group">
+												<input type="hidden" name="stock" id="stock" th:value="${medicamento.stock}">
+											</div>
+											<div class="form-group ">
+												<button class="btn btn-info ml-3 mb-3" type="submit"><i class='bx bxs-cart-add'></i> Añadir al carrito</button>
+											</div>
 										</form>
 									</div>
 									<div sec:authorize="hasRole('ROLE_ADMIN')">
@@ -134,11 +142,17 @@
 											<input type="hidden" name="descripcion" id="descripcion" th:value="${medicamento.descripcion}">
 											<input type="hidden" name="precio" id="precio" th:value="${medicamento.precio}">
 											<input type="hidden" name="receta" id="receta" th:value="${medicamento.receta}">
-											<input class="form-control" type="number" name="stock" id="stock" step="1" placeholder="0" th:value="${stock}">
-											<button class="btn btn-sm btn-info pull-right" type="submit"><i class='bx bx-chevrons-up'></i> Cambiar stock</button>
+											<div class="form-group">
+												<input class="col-md-5 ml-3" type="number" name="stock" id="stock" step="1" placeholder="0" th:value="${stock}">
+											</div>
+											<div class="form-group">
+												<button class="btn btn-sm btn-info ml-3" type="submit"><i class='bx bx-chevrons-up'></i> Cambiar stock</button>
+											</div>
 										</form>
-										<a class="btn btn-info pull-right" th:href="@{../editMedicamentoForm/?idMedicamento=__${medicamento.idMedicamento}__}"><i class='bx bx-edit-alt'></i> Editar</a>
-										<a class="btn btn-info pull-right" th:href="@{../delete/?idMedicamento=__${medicamento.idMedicamento}__}"><i class='bx bx-trash-alt'></i> Eliminar</a>
+										<div class="form-group">
+											<a class="btn btn-info mr-2 ml-3 mb-3" th:href="@{../editMedicamentoForm/?idMedicamento=__${medicamento.idMedicamento}__}"><i class='bx bx-edit-alt'></i> Editar</a>
+											<a class="btn btn-info mb-3" th:href="@{../delete/?idMedicamento=__${medicamento.idMedicamento}__}"><i class='bx bx-trash-alt'></i> Eliminar</a>
+										</div>
 									</div>
 								</div>
 							</div>
