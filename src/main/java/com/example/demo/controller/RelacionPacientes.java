@@ -37,6 +37,7 @@ public class RelacionPacientes {
 
     private static final String VISTA = "relacionPacientes";
     private static final String VISTA2 = "altaPaciente";
+    private static final String VISTA3 = "datosPaciente";
     private static final Log LOG = LogFactory.getLog(RelacionPacientes.class);
 
     @Autowired
@@ -51,6 +52,7 @@ public class RelacionPacientes {
     }
     
     // Muestra la relación de pacientes.
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO')")
     @GetMapping({"/relacion"})
     public ModelAndView relacionpacientes() {
         ModelAndView pacientes=new ModelAndView(VISTA);
@@ -133,7 +135,7 @@ public class RelacionPacientes {
         System.out.println(paciente.getIdPaciente());
         System.out.println(paciente.getNombre());
         model.addAttribute("paciente",paciente);
-        return VISTA2;
+        return VISTA3;
     }
 
 
