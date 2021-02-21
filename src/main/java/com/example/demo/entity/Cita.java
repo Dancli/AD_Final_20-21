@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -28,9 +30,9 @@ public class Cita {
 	@ManyToOne
 	@JoinColumn(name="idMedico")
 	private Medico medico;
-	
+
 	@Column(name="fecha")
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fecha;
 	
 	@Column(name="observaciones", length=200)

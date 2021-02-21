@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import javax.validation.Valid;
 
+import com.example.demo.entity.Medico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,6 @@ public class RelacionPacientes {
     }
 
     @GetMapping(value = {"/altaPaciente"})
-    //public String pacienteForm(@PathVariable(name="idPaciente", required=false) Integer idPaciente, Model model) {
     public String pacienteForm(@RequestParam(name="idPaciente",required = false) Integer idPaciente,@RequestParam(name="nombre",required=false) String nombre, Model model){
         PacienteModel pacienteModel=new PacienteModel();
 
@@ -66,6 +66,10 @@ public class RelacionPacientes {
         model.addAttribute("paciente",paciente);
         return VISTA2;
     }
+    @GetMapping("/perfilPaciente")
+
+
+
 
 
     //Para añadir al paciente
