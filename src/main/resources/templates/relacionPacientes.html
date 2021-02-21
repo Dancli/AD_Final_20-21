@@ -66,7 +66,7 @@
                   <th scope="col">Apellidos</th>
                   <th scope="col">Edad</th>
                   <th scope="col">Direccion</th>
-                  <th scope="col">Acciones</th>
+                  <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">Acciones</th>
                 </tr>
               </thead>
               <tbody th:each="paciente:${pacientes}" >
@@ -80,7 +80,7 @@
                   <td th:text=${paciente.apellidos}> </td>
                   <td th:text=${paciente.edad}> </td>
                   <td th:text=${paciente.direccion}> </td>
-                  <td>
+                  <td sec:authorize="hasRole('ROLE_ADMIN')">
                   	<a class="btn btn-default" 
                   	th:href="@{bajaPaciente/?idPaciente=__${paciente.idPaciente}__}">
                   		<span class="icofont-ui-delete"></span>
