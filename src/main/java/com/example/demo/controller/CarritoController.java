@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.configuration.CompraPDFExporter;
 import com.example.demo.entity.Compra;
 import com.example.demo.entity.ItemCompra;
+import com.example.demo.entity.Medicamento;
 import com.example.demo.entity.Paciente;
 import com.example.demo.model.CompraModel;
 import com.example.demo.model.MedicamentoModel;
@@ -161,16 +162,21 @@ private static final String VIEW = "carrito";
 		// Guarda la compra en la BD
 		CompraModel compra = (CompraModel) session.getAttribute("compra");
 		carritoService.saveCompra(compra);
-		/*
-		for (ItemCompra item : compra.getItems()) {
-			itemService.saveItem(item);
-			int itemsInCart = Collections.frequency(compra.getItems(), item);
+		
+		Set<ItemCompra> items = compra.getItems();
+		int itemsInCart = 0;
+		for (ItemCompra item : items) {
 			Medicamento medicamento = item.getMedicamento();
+			for(ItemCompra item2: items) {
+				if(medicamento == item2.getMedicamento()) {
+					itemsInCart += 1;
+				}
+			}	
 			int stock = medicamento.getStock();
 			medicamento.setStock(stock - itemsInCart);
 			tiendaService.saveMedicamento(tiendaService.transformEntityToModel(medicamento));
 		}
-		*/
+		
 		response.setContentType("application/pdf");
 		DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy_HH:mm:ss");
 		String currentDateTime = dateFormatter.format(new Date());
