@@ -23,7 +23,6 @@ public class DefaultUsersRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		createAdmin();
-		createGuest();
 	}
 	
 	private void createAdmin() {
@@ -36,16 +35,5 @@ public class DefaultUsersRunner implements CommandLineRunner {
 			userService.registrar(admin);
 		}
 		
-	}
-	
-	private void createGuest() {
-		if(userRepository.findByUsername("guest") == null) {
-			User guest = new User();
-			guest.setUsername("guest");
-			guest.setPassword("guest");
-			guest.setEnabled(true);
-			guest.setRole("ROLE_GUEST");
-			userService.registrar(guest);
-		}
 	}
 }

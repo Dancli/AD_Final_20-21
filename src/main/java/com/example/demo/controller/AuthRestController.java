@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +29,7 @@ public class AuthRestController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
+	@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:8100"})
 	@PostMapping("/loginRest")
 	public User login(
 		@RequestParam("user") String username,
@@ -46,7 +48,7 @@ public class AuthRestController {
 	// Generador de token.
 	public String getJWTToken(String username) {
 		String secretKey = "mySecretKey";
-		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN");
+		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN, ROLE_PACIENTE");
 		String token = Jwts
 				.builder()
 				.setId("softtekJWT")

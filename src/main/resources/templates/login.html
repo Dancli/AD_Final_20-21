@@ -84,25 +84,6 @@
 					</div>
 				</div>
 
-				<div class="col-md-9 mx-auto">
-					<div class="row mt-3 mb-3">
-						<form class="form-signin" th:action="@{/auth/login-post}" th:object="${user}" method="POST">
-							<input type="hidden" name="${ csrf.parameterName }" value="${ csrf.token }">
-							<input type="hidden" name="username" id="username" value="guest">
-							<input type="hidden" name="password" id="password" value="guest">
-							<div class="row mt-3 mb-3">
-								<button type="submit" class="btn btn-lg btn-primary btn-block">Acceder como invitado</button>
-							</div>
-						</form>
-					</div>
-
-
-
-					<div class="row mt-3 mb-3">
-						<span>¿No tienes una cuenta? <a th:href="@{/pacientes/altaPaciente}">¡Regístrate!</a></span>
-					</div>
-				</div>
-
 			</main>
 			<!-- End #main -->
 		</div>

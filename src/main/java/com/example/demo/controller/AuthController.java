@@ -49,6 +49,6 @@ public class AuthController {
 	public String register(@ModelAttribute User user, RedirectAttributes flash) {
 		userService.registrar(user);
 		flash.addFlashAttribute("success", "Usuario registrado con éxito.");
-		return "redirect:/auth/login";
+		return "redirect:/inicio/";
 	}
 }

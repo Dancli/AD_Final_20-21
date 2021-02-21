@@ -75,28 +75,25 @@
 
         <li><a href="#about">¿Quiénes somos?</a></li>
 
-        <li class="drop-down"><a href="">Pacientes</a>
+        <li sec:authorize="isAuthenticated()" class="drop-down"><a href="">Pacientes</a>
           <ul>
-            <li sec:authorize="!isAuthenticated()"><a th:href="@{/pacientes/altaPaciente}">Alta de pacientes</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/pacientes/altaPaciente}">Alta de pacientes</a></li>
             <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO')"><a th:href="@{/pacientes/relacion}">Lista de pacientes</a></li>
-            <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/relacion}">Lista de Medicos</a></li>
             <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Mi perfil</a></li>
             <li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>
             <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
             <!--<li><a href="#">Lista de profesionales</a></li>-->
-            <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE', 'ROLE_GUEST')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
           </ul>
         </li>
 
         <li class="drop-down"><a href="">Medicos</a>
           <ul>
-            <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/altaMedico}">Alta de Medicos</a></li>
-            <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/relacion}">Lista de Medicos</a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/altaMedico}">Alta de médicos</a></li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{/medicos/relacion}">Lista de médicos</a></li>
             <li sec:authorize="hasRole('ROLE_MEDICO')"><a href="#">Mi perfil</a></li>
-            <!--<li sec:authorize="hasRole('ROLE_PACIENTE')"><a href="#">Pedir cita médica</a></li>-->
             <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MEDICO', 'ROLE_PACIENTE')"><a href="#">Citas médicas</a></li>
-            <li sec:authorize="hasAnyRole('ROLE_GUEST')"><a href="@{/medicos/consultarporespecialidad}"Consultar por especialidad</a></li>
-            <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PACIENTE', 'ROLE_GUEST')"><a th:href="@{/tienda/pagina/1}">Tienda de medicamentos</a></li>
+            <li><a href="@{/medicos/consultarporespecialidad}">Consultar por especialidad</a></li>
           </ul>
         </li>
 
@@ -224,21 +221,17 @@
           <div class="form-row">
             <div class="col-sm-9">
               <div class="form-group has-feedback">
-                <label for="especialidad">Especialidad</label><br>
-                <select  th:value="${especialidad}" id="especialidad" name="especialidad">
-                  <div class="form-row">
-                    <div class="col-sm-6">
-                      <option value="Medico de familia">Medico de familia</option>
-                      <option value="digestivo">digestivo</option>
-                      <option value="neurologo">Neurologo</option>
-                      <option value="dermatologo">dermatologo</option>
-                      <option  value="traumatologo">traumatologo</option>
-                    </div><br>
-                  </div>
+                <label for="especialidad">Especialidad</label>
+                <br>
+                <select th:value="${especialidad}" id="especialidad" name="especialidad">
+                	<option value="medico de familia">Médico de familia</option>
+                	<option value="digestivo">Digestivo</option>
+                	<option value="neurologo">Neurólogo</option>
+                	<option value="dermatologo">Dermatólogo</option>
+                	<option  value="traumatologo">Traumatólogo</option>
                 </select>
               </div>
             </div>
-            </select>
             <div class="form-group" >
               <button class="btn btn-primary btn-block" type="submit" >Consultar</button>
             </div>
