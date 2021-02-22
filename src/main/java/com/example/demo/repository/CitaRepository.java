@@ -13,8 +13,7 @@ import java.util.List;
 
 @Repository("citaRepository")
 public interface CitaRepository extends JpaRepository<Cita, Serializable> {
-    @Query(value = "SELECT * FROM pacientes p WHERE p.idPaciente LIKE %:username%", nativeQuery = true)
-    public List<Paciente> findPacienteByUsername(String username);
+
 
 }
 

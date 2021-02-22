@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - Medilab Bootstrap Template</title>
+  <title>Medicos por Categoría</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -83,13 +83,10 @@
                      <span th:unless="${medico.activo == 'false'}">No Activo</span>
                    </td>-->
                   <td>
-                  	<a class="btn btn-default"
-                  	th:href="@{bajaMedico/?idMedico=__${medico.idMedico}__}">
-                  		<span class="icofont-ui-delete"></span>
-                  	</a>
-                  	<a class="btn btn-default" 
-                  	th:href="@{editar/?idMedico=__${medico.idMedico}__}" >
-                  		<span class="icofont-ui-edit"></span>
+                  	<a class="btn btn-primary btn-block"
+                  	th:href="@{citas/AltaCita/?idMedico=__${medico.idMedico}__}" >
+                      Pedir Cita
+
                   	</a>
                   </td>
 

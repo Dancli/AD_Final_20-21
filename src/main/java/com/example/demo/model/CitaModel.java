@@ -1,12 +1,15 @@
 package com.example.demo.model;
 
+import com.example.demo.entity.Medico;
+import com.example.demo.entity.Paciente;
+
 import java.util.Date;
 
 public class CitaModel {
 	
-	private String idCita;
-	private String idPaciente;
-	private String idMedico;
+	private int idCita;
+	private Paciente paciente;
+	private Medico medico;
 	private Date fecha;
 	private String observaciones;
 	
@@ -14,37 +17,37 @@ public class CitaModel {
 		super();
 	}
 
-	public CitaModel(String idCita, String idPaciente, String idMedico, Date fecha, String observaciones) {
+	public CitaModel(int idCita, Paciente paciente , Medico medico, Date fecha, String observaciones) {
 		super();
 		this.idCita = idCita;
-		this.idPaciente = idPaciente;
-		this.idMedico = idMedico;
+		this.paciente = paciente;
+		this.medico = medico;
 		this.fecha = fecha;
 		this.observaciones = observaciones;
 	}
 
-	public String getIdCita() {
+	public int getIdCita() {
 		return idCita;
 	}
 
-	public void setIdCita(String idCita) {
+	public void setIdCita(int idCita) {
 		this.idCita = idCita;
 	}
 
-	public String getIdPaciente() {
-		return idPaciente;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setIdPaciente(String idPaciente) {
-		this.idPaciente = idPaciente;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
-	public String getIdMedico() {
-		return idMedico;
+	public Medico getMedico() {
+		return medico;
 	}
 
-	public void setIdMedico(String idMedico) {
-		this.idMedico = idMedico;
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 
 	public Date getFecha() {
@@ -65,10 +68,12 @@ public class CitaModel {
 
 	@Override
 	public String toString() {
-		return "CitaModel [idCita=" + idCita + ", idPaciente=" + idPaciente + ", idMedico=" + idMedico + ", fecha=" + fecha
-				+ ", observaciones=" + observaciones + "]";
+		return "CitaModel{" +
+				"idCita=" + idCita +
+				", paciente=" + paciente+
+				", medico=" + medico +
+				", fecha=" + fecha +
+				", observaciones='" + observaciones + '\'' +
+				'}';
 	}
-	
-	
-	
 }
