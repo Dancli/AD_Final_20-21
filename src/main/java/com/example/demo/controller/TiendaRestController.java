@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.MedicamentoModel;
 import com.example.demo.service.TiendaService;
 
-@CrossOrigin(origins = "http://localhost:8080", methods={RequestMethod.GET, RequestMethod.POST})
 @RestController
 @RequestMapping("/api")
 public class TiendaRestController {
